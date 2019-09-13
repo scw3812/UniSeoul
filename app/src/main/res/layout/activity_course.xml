@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CourseActivity"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/course_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="title"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/course_map_button"
+                android:layout_width="40dp"
+                android:layout_height="47dp"
+                android:src = "@drawable/location" />
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/course_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:layout_marginVertical="20dp"/>
+
+       <TextView
+           android:id="@+id/course_content"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:textSize="15sp"/>
+
+        <ImageView
+            android:id="@+id/course_image_barrierfree"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:layout_marginVertical="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:weightSum="12"
+            android:gravity="bottom"
+            android:layout_gravity="bottom">
+            <ImageView
+                android:id="@+id/course_barrierfree1"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/sidewalk"
+                android:layout_weight="1"
+                android:clickable="true"/>
+            <ImageView
+                android:id="@+id/course_barrierfree2"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/parking"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/course_barrierfree3"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/uneven"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/course_barrierfree4"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/elevator"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/course_barrierfree5"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/toilet"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/course_barrierfree6"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/room"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/course_barrierfree7"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/stand"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/course_barrierfree8"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ticket"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/course_barrierfree9"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/vision"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/course_barrierfree10"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/hearing"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/course_barrierfree11"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/guide"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/course_barrierfree12"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/wheelchair"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
