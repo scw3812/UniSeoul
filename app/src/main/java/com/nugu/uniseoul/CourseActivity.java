@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import com.nugu.uniseoul.data.CourseData;
 
 public class CourseActivity extends AppCompatActivity implements View.OnClickListener {
-    //실험
+
     private TextView textViewTitle;
     private ImageView courseImage;
     private TextView textViewContent;
