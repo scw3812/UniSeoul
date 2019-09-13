@@ -36,7 +36,7 @@ public class BusRouteActivity extends AppCompatActivity {
             public void run() {
                 String rtId = getIntent().getExtras().getString("rtId");
 
-                String queryUrl = "http://ws.bus.go.kr/api/rest/busRouteInfo/getStaionByRoute?ServiceKey=x%2FZr06rKIdxezUe0OLkuibQ%2BkhuzMUskBtIm0gVVK48LEHIRuBLwSDXdtYIyKt58IMgY0BXbTBC4Ipi2iE6Znw%3D%3D&busRouteId="+rtId;
+                String queryUrl = "http://ws.bus.go.kr/api/rest/busRouteInfo/getStaionByRoute?ServiceKey=공공데이터API키&busRouteId="+rtId;
                 // TODO Auto-generated method stub
                 try {
                     URL url = new URL(queryUrl);//문자열로 된 요청 url을 URL 객체로 생성.
