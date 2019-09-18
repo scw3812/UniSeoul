@@ -1,4 +1,4 @@
-package com.nugu.uniseoul.Task;
+package com.nugu.uniseoul.task;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -12,8 +12,8 @@ import java.net.URL;
 
 public class GeocoderTask extends AsyncTask<String, Void, String> {
 
-    String clientId = "네이버 클라이언트 아이디";// 애플리케이션 클라이언트 아이디값";
-    String clientSecret = "네이버 클라이언트 시크릿";// 애플리케이션 클라이언트 시크릿값"
+    String clientId = "6rophju24e";// 애플리케이션 클라이언트 아이디값";
+    String clientSecret = "blztuXQAiGrZt9gxKMZ1GRqjCqJQ8iP5qjMktmim";// 애플리케이션 클라이언트 시크릿값"
     private String str, receiveMsg;
 
     @Override

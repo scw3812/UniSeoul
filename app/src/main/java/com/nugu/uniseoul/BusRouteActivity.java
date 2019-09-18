@@ -2,12 +2,7 @@ package com.nugu.uniseoul;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -16,7 +11,6 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.List;
 
 public class BusRouteActivity extends AppCompatActivity {
 
@@ -36,7 +30,7 @@ public class BusRouteActivity extends AppCompatActivity {
             public void run() {
                 String rtId = getIntent().getExtras().getString("rtId");
 
-                String queryUrl = "http://ws.bus.go.kr/api/rest/busRouteInfo/getStaionByRoute?ServiceKey=공공데이터API키&busRouteId="+rtId;
+                String queryUrl = "http://ws.bus.go.kr/api/rest/busRouteInfo/getStaionByRoute?ServiceKey=x%2FZr06rKIdxezUe0OLkuibQ%2BkhuzMUskBtIm0gVVK48LEHIRuBLwSDXdtYIyKt58IMgY0BXbTBC4Ipi2iE6Znw%3D%3D&busRouteId="+rtId;
                 // TODO Auto-generated method stub
                 try {
                     URL url = new URL(queryUrl);//문자열로 된 요청 url을 URL 객체로 생성.

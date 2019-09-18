@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
@@ -26,23 +27,31 @@ public class TransportActivity extends AppCompatActivity {
 
     private GridLayout gridLayout;
     private String arsId;
+    private String stationNm;
     private List<String> data;
     private List<String> rtIds;
     private List<String> rtNms;
     private LinearLayout.LayoutParams params;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_transport);
 
         gridLayout = (GridLayout) findViewById(R.id.transport_layout);
+        textView = (TextView)findViewById(R.id.transport_textview);
         rtIds = new ArrayList<>();
         rtNms = new ArrayList<>();
-        arsId = getIntent().getStringExtra("arsId");
+        String busData[] = getIntent().getStringExtra("busData").split(",");
+        stationNm = busData[0];
+        arsId = busData[1];
+
         params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.setMargins(0, 0, 10, 10);  // 왼쪽, 위, 오른쪽, 아래 순서입니다.
 
+        textView.setText(stationNm);
 
         new Thread(new Runnable() {
 
@@ -100,7 +109,7 @@ public class TransportActivity extends AppCompatActivity {
     List<String> getRouteXmlData(String arsId) {
         List<String> routeList = new ArrayList<>();
 
-        String queryUrl = "http://ws.bus.go.kr/api/rest/stationinfo/getLowStationByUid?ServiceKey=공공데이터API키&arsId=" + arsId;
+        String queryUrl = "http://ws.bus.go.kr/api/rest/stationinfo/getLowStationByUid?ServiceKey=x%2FZr06rKIdxezUe0OLkuibQ%2BkhuzMUskBtIm0gVVK48LEHIRuBLwSDXdtYIyKt58IMgY0BXbTBC4Ipi2iE6Znw%3D%3D&arsId=" + arsId;
 
         try {
             URL url = new URL(queryUrl);//문자열로 된 요청 url을 URL 객체로 생성.
