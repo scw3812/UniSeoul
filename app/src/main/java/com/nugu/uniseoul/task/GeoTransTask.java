@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class GeoTransTask extends AsyncTask<String,Void,String> {
 
-    String appKey = "a416e2aa8a4fa2096f48a6f626333809";// 애플리케이션 키값";
+    String appKey = "카카오 어플키";// 애플리케이션 키값";
     private String str, receiveMsg;
 
     @Override

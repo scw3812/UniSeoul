@@ -36,7 +36,7 @@
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="6rophju24e" />
+            android:value="클라리언트 아이디" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
