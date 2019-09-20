@@ -4,7 +4,9 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +23,8 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     private ImageButton mapButton;
     private ImageView[] courseBarrierFree;
     private ImageView courseImageBarrierFree;
+    private Button readReviewBtn;
+    private Button writeReviewBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +72,28 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             }
             courseBarrierFree[i].setOnClickListener(this);
         }
+
+        writeReviewBtn = findViewById(R.id.writeReviewBtn);
+        readReviewBtn = findViewById(R.id.readReviewBtn);
+
+        writeReviewBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CourseActivity.this,WriteReviewActivity.class);
+                Log.d("cid",title);
+                intent.putExtra("cid",title);
+                startActivity(intent);
+            }
+        });
+
+        readReviewBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CourseActivity.this,ReadReviewActivity.class);
+                intent.putExtra("cid",title);
+                startActivity(intent);
+            }
+        });
 
         //위치 버튼 클릭 이벤트
         mapButton.setOnClickListener(new View.OnClickListener() {

@@ -15,12 +15,21 @@
         <activity
             android:name=".SubwayActivity"
             android:theme="@style/popupTheme"/>
-        <activity android:name=".BusRouteActivity" />
         <activity
             android:name=".TransportActivity"
             android:theme="@style/popupTheme"/>
+        <activity android:name=".BusRouteActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".CourseActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".RestaurantActivity" />
+        <activity android:name=".AccomoActivity" />
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".ReadReviewActivity"/>
+        <activity android:name=".SelectActivity"/>
+        <activity android:name=".VolActivity"/>
+        <activity android:name=".VolListActivity"/>
+        <activity android:name=".WriteReviewActivity"/>
         <activity
             android:name=".LoadingActivity"
             android:theme="@style/LoadingTheme">
@@ -30,9 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".RestaurantActivity" />
-        <activity android:name=".AccomoActivity" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"

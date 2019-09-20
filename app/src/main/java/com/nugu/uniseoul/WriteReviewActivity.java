@@ -68,7 +68,7 @@ public class WriteReviewActivity extends AppCompatActivity {
     private void select_doProcess(String cid, String title, String content) {
 
         HttpClient client = new DefaultHttpClient();
-        HttpPost post = new HttpPost("http://xxx.xxx.xxx.xxx:3000/create_review");
+        HttpPost post = new HttpPost("http://15.164.80.191:3000/create_review");
         ArrayList<NameValuePair> nameValues =
                 new ArrayList<NameValuePair>();
         cid = cid.replace(" ","_");

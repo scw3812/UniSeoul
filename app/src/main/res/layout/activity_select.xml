@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/auth_id_textView"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_margin="20dp">
+    </TextView>
+    <Button
+        android:id="@+id/info_btn"
+        android:layout_width="match_parent"
+        android:layout_height="250sp"
+        android:layout_margin="25sp"
+        android:text="관광지 정보"
+        >
+    </Button>
+    <Button
+        android:id="@+id/vol_btn"
+        android:layout_width="match_parent"
+        android:layout_height="250sp"
+        android:layout_margin="25sp"
+        android:text="동행 서비스  \n 활동 신청 / 지원 신청"
+        >
+
+    </Button>
+
+
+</LinearLayout>

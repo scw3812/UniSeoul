@@ -137,5 +137,27 @@
                 android:layout_weight="1"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <Button
+                android:id="@+id/writeReviewBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="리뷰 작성하기">
+            </Button>
+            <Button
+                android:id="@+id/readReviewBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="리뷰 확인하기">
+            </Button>
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

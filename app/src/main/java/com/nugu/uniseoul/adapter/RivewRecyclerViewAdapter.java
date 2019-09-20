@@ -60,11 +60,11 @@ public class RivewRecyclerViewAdapter extends RecyclerView.Adapter<RivewRecycler
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        ReviewData reviews = mDataset.get(position);
+        ReviewData review = mDataset.get(position);
 
 
-        holder.title_textview.setText(reviews.getTitle());
-        holder.content_textview.setText(reviews.getContent());
+        holder.title_textview.setText(review.getTitle());
+        holder.content_textview.setText(review.getContent());
 
     }
 
