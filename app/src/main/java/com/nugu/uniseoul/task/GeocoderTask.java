@@ -14,16 +14,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class GeocoderTask extends AsyncTask<String, Void, String> {
-    Context context;
-    String clientId = context.getString(R.string.naver_client_id);// 애플리케이션 클라이언트 아이디값";
-    String clientSecret = context.getString(R.string.naver_client_secret);// 애플리케이션 클라이언트 시크릿값"
+
+    String clientId;// 애플리케이션 클라이언트 아이디값";
+    String clientSecret;// 애플리케이션 클라이언트 시크릿값"
     private String str, receiveMsg;
 
-    public GeocoderTask(Context context){
-        this.context = context;
+    public GeocoderTask(String clientId, String clientSecret){
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
     }
     @Override
     protected String doInBackground(String... params) {
+
         URL url = null;
         try {
             url = new URL("https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" + params[0]);

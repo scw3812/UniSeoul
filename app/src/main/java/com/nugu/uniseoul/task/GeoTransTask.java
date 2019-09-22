@@ -16,12 +16,11 @@ import java.net.URL;
 
 public class GeoTransTask extends AsyncTask<String,Void,String> {
 
-    Context context;
-    String appKey = context.getString(R.string.kakao_application_key);// 애플리케이션 키값";
+    String appKey;// 애플리케이션 키값";
     private String str, receiveMsg;
 
-    public GeoTransTask(Context context){
-        this.context = context;
+    public GeoTransTask(String appKey){
+        this.appKey = appKey;
     }
     @Override
     protected String doInBackground(String... params) {

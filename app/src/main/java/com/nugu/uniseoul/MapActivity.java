@@ -69,7 +69,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         String json = "";
 
         try {
-            json = new GeocoderTask(this).execute(address).get();
+            json = new GeocoderTask(getString(R.string.naver_client_id),getString(R.string.naver_client_secret)).execute(address).get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -168,7 +168,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             String json = "";
 
                             try {
-                                json = new GeoTransTask(MapActivity.this).execute(xyStation).get();
+                                json = new GeoTransTask(getString(R.string.kakao_application_key)).execute(xyStation).get();
                             } catch (ExecutionException e) {
                                 e.printStackTrace();
                             } catch (InterruptedException e) {

@@ -30,7 +30,7 @@ public class BusRouteActivity extends AppCompatActivity {
             public void run() {
                 String rtId = getIntent().getExtras().getString("rtId");
 
-                String queryUrl = "http://ws.bus.go.kr/api/rest/busRouteInfo/getStaionByRoute?ServiceKey="+getString(R.string.bus_api_key)+"busRouteId="+rtId;
+                String queryUrl = "http://ws.bus.go.kr/api/rest/busRouteInfo/getStaionByRoute?ServiceKey="+getString(R.string.bus_api_key)+"&busRouteId="+rtId;
                 // TODO Auto-generated method stub
                 try {
                     URL url = new URL(queryUrl);//문자열로 된 요청 url을 URL 객체로 생성.
@@ -78,7 +78,9 @@ public class BusRouteActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     // TODO Auto-generated catch blocke.printStackTrace();
                 }
+
                 buffer.deleteCharAt(buffer.length()-2);
+
 
                 runOnUiThread(new Runnable() {
 
