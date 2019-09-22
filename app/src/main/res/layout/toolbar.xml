@@ -5,14 +5,18 @@
     android:id="@+id/toolbar"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    android:background="#66CC33">
-
+    app:theme="@style/ThemeOverlay.AppCompat.Light"
+    android:background="#ffffff">
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/seoul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/seoul"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/toolbar_icon_uniseoul"
         android:layout_gravity="center"/>
 
 </androidx.appcompat.widget.Toolbar>

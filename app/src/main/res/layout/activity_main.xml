@@ -1,61 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:weightSum="10">
 
     <include layout="@layout/toolbar" />
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/main_drawerlayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="10">
 
-        <LinearLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/main_course_tablayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/main_tablayout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#40666666"/>
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/main_top_viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="20dp"/>
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/main_viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/main_drawer"
-            android:layout_width="240dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:orientation="vertical">
-            <ListView
-                android:id="@+id/main_drawer_list"
+            android:layout_height="40dp"
+            android:background="#40666666">
+            <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:choiceMode="singleChoice"
-                android:background="#90333333"
-                android:divider="#ffffff"
-                android:dividerHeight="0dp" />
-        </LinearLayout>
+                android:text="역사"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="문화"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="공원"/>
+        </com.google.android.material.tabs.TabLayout>
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/main_top_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="20dp"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/main_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/main_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        app:tabTextColor="#50af40">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/main_tab_vol"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:icon="@drawable/selector_vol"
+            android:text="봉사신청" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/main_tab_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:icon="@drawable/selector_profile"
+            android:text="My Page" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/main_tab_trip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:icon="@drawable/selector_trip"
+            android:text="여행정보" />
+
+    </com.google.android.material.tabs.TabLayout>
+
 </LinearLayout>
 
 
