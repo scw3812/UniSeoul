@@ -1,7 +1,11 @@
 package com.nugu.uniseoul.task;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.nugu.uniseoul.GeoTrans;
+import com.nugu.uniseoul.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,9 +16,13 @@ import java.net.URL;
 
 public class GeoTransTask extends AsyncTask<String,Void,String> {
 
-    String appKey = "a416e2aa8a4fa2096f48a6f626333809";// 애플리케이션 키값";
+    Context context;
+    String appKey = context.getString(R.string.kakao_application_key);// 애플리케이션 키값";
     private String str, receiveMsg;
 
+    public GeoTransTask(Context context){
+        this.context = context;
+    }
     @Override
     protected String doInBackground(String... params) {
         URL url = null;

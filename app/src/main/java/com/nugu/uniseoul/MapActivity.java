@@ -69,7 +69,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         String json = "";
 
         try {
-            json = new GeocoderTask().execute(address).get();
+            json = new GeocoderTask(this).execute(address).get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -168,7 +168,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             String json = "";
 
                             try {
-                                json = new GeoTransTask().execute(xyStation).get();
+                                json = new GeoTransTask(MapActivity.this).execute(xyStation).get();
                             } catch (ExecutionException e) {
                                 e.printStackTrace();
                             } catch (InterruptedException e) {
@@ -202,7 +202,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     String getBusStationXmlData(double lat, double lon) {
         StringBuffer buffer = new StringBuffer();
 
-        String queryUrl = "http://ws.bus.go.kr/api/rest/stationinfo/getStationByPos?ServiceKey=x%2FZr06rKIdxezUe0OLkuibQ%2BkhuzMUskBtIm0gVVK48LEHIRuBLwSDXdtYIyKt58IMgY0BXbTBC4Ipi2iE6Znw%3D%3D&tmX=" + lon + "&tmY=" + lat + "&radius=600";
+        String queryUrl = "http://ws.bus.go.kr/api/rest/stationinfo/getStationByPos?ServiceKey="+getString(R.string.bus_api_key)+"&tmX=" + lon + "&tmY=" + lat + "&radius=600";
         Log.d("url", queryUrl);
         try {
             URL url = new URL(queryUrl);//문자열로 된 요청 url을 URL 객체로 생성.
@@ -267,7 +267,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         GeoPoint in_pt = new GeoPoint(lon, lat);
         GeoPoint tm_pt = GeoTrans.convert(GeoTrans.GEO, GeoTrans.TM, in_pt);
 
-        String queryUrl = "http://swopenapi.seoul.go.kr/api/subway/695746774e736377393561766d7953/xml/nearBy/0/5/"+tm_pt.getX()+"/"+tm_pt.getY();
+        String queryUrl = "http://swopenapi.seoul.go.kr/api/subway/"+getString(R.string.subway_api_key1)+"/xml/nearBy/0/5/"+tm_pt.getX()+"/"+tm_pt.getY();
         Log.d("url", queryUrl);
         try {
             URL url = new URL(queryUrl);//문자열로 된 요청 url을 URL 객체로 생성.

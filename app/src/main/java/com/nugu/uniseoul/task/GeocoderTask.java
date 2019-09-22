@@ -1,7 +1,10 @@
 package com.nugu.uniseoul.task;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.nugu.uniseoul.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,11 +14,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class GeocoderTask extends AsyncTask<String, Void, String> {
-
-    String clientId = "6rophju24e";// 애플리케이션 클라이언트 아이디값";
-    String clientSecret = "blztuXQAiGrZt9gxKMZ1GRqjCqJQ8iP5qjMktmim";// 애플리케이션 클라이언트 시크릿값"
+    Context context;
+    String clientId = context.getString(R.string.naver_client_id);// 애플리케이션 클라이언트 아이디값";
+    String clientSecret = context.getString(R.string.naver_client_secret);// 애플리케이션 클라이언트 시크릿값"
     private String str, receiveMsg;
 
+    public GeocoderTask(Context context){
+        this.context = context;
+    }
     @Override
     protected String doInBackground(String... params) {
         URL url = null;

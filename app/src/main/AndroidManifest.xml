@@ -40,7 +40,7 @@
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="6rophju24e"/>
+            android:value= "@string/naver_client_id"/>
     </application>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 

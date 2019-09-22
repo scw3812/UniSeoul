@@ -101,7 +101,7 @@ public class SubwayActivity extends AppCompatActivity {
     String getSubwayXmlData(String frCode){
         StringBuffer buffer = new StringBuffer();
 
-        String queryUrl = "http://openapi.seoul.go.kr:8088/48644b64477363773638705a464f6a/xml/SearchSTNInfoByFRCodeService/1/1/"+frCode;
+        String queryUrl = "http://openapi.seoul.go.kr:8088/"+getString(R.string.subway_api_key2)+"/xml/SearchSTNInfoByFRCodeService/1/1/"+frCode;
         Log.d("url", queryUrl);
         try {
             URL url = new URL(queryUrl);//문자열로 된 요청 url을 URL 객체로 생성.
