@@ -8,9 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-import org.w3c.dom.Text;
+import com.nugu.uniseoul.fragment.VolFragment;
 
 public class SelectActivity extends AppCompatActivity {
 
@@ -54,7 +52,7 @@ public class SelectActivity extends AppCompatActivity {
         vol_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SelectActivity.this,VolActivity.class);
+                Intent intent = new Intent(SelectActivity.this, VolFragment.class);
                 intent.putExtra("user_name",user_name);
                 intent.putExtra("user_email",user_email);
                 startActivity(intent);

@@ -25,7 +25,7 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".ReadReviewActivity"/>
         <activity android:name=".SelectActivity"/>
-        <activity android:name=".VolActivity"/>
+        <activity android:name=".fragment.VolFragment"/>
         <activity android:name=".VolListActivity"/>
         <activity android:name=".WriteReviewActivity"/>
         <activity

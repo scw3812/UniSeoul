@@ -2,7 +2,6 @@ package com.nugu.uniseoul.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.nugu.uniseoul.CourseActivity;
 import com.nugu.uniseoul.R;
-import com.nugu.uniseoul.VolActivity;
 import com.nugu.uniseoul.VolListActivity;
-import com.nugu.uniseoul.data.ReviewData;
 import com.nugu.uniseoul.data.VolData;
 
 import java.util.List;

@@ -1,13 +1,21 @@
-package com.nugu.uniseoul;
+package com.nugu.uniseoul.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
+import com.nugu.uniseoul.R;
 import com.nugu.uniseoul.adapter.RivewRecyclerViewAdapter;
 import com.nugu.uniseoul.adapter.VolRecyclerViewAdapter;
 import com.nugu.uniseoul.data.VolData;
@@ -24,7 +32,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VolActivity extends AppCompatActivity {
+public class VolFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -34,26 +42,28 @@ public class VolActivity extends AppCompatActivity {
 
 
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vol);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ViewGroup viewGroup = (ViewGroup)inflater.inflate(R.layout.fragment_vol,container,false);
 
 
         //recyclerView
-        recyclerView = (RecyclerView) findViewById(R.id.vol_recyclerview);
+        recyclerView = (RecyclerView) viewGroup.findViewById(R.id.vol_recyclerview);
         recyclerView.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
         //
-        Intent intent = getIntent();
+        Intent intent = getActivity().getIntent();
 
         Bundle bundle = intent.getExtras();
 
-        final String user_name = bundle.getString("user_name");
-        final String user_email = bundle.getString("user_email");
+//        final String user_name = bundle.getString("user_name");
+//        final String user_email = bundle.getString("user_email");
+        final String user_name = "seo";
+        final String user_email = "scw3812@naver.com";
 
 
         new Thread() {
@@ -63,7 +73,7 @@ public class VolActivity extends AppCompatActivity {
             }
         }.start();
 
-
+        return viewGroup;
     }
 
     protected void parse(String addr,String user_name, String user_email){
@@ -115,7 +125,7 @@ public class VolActivity extends AppCompatActivity {
                     volDatas.add(volData);
                 }
 
-                mAdapter = new VolRecyclerViewAdapter(volDatas,user_name,user_email, VolActivity.this);
+                mAdapter = new VolRecyclerViewAdapter(volDatas,user_name,user_email, getActivity());
                 recyclerView.setAdapter(mAdapter);
 
             } catch (JSONException e) {
@@ -132,7 +142,7 @@ public class VolActivity extends AppCompatActivity {
             volData.setContent("\n No service in progress  \n" );
             volDatas.add(volData);
 
-            mAdapter = new VolRecyclerViewAdapter(volDatas,user_name,user_email, VolActivity.this);
+            mAdapter = new VolRecyclerViewAdapter(volDatas,user_name,user_email, getActivity());
             recyclerView.setAdapter(mAdapter);
 
 

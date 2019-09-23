@@ -28,7 +28,7 @@ public class SlideFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.slide_fragment, container, false);
+        View view =inflater.inflate(R.layout.fragment_slide, container, false);
         recyclerView = (RecyclerView)view.findViewById(R.id.slide_recyclerview);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         pagerSnapHelper = new PagerSnapHelper();

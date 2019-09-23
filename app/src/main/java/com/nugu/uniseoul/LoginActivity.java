@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity  {
                             String user_name = mAuth.getCurrentUser().getDisplayName();
                             String user_email = mAuth.getCurrentUser().getEmail();
 
-                            Intent intent = new Intent(LoginActivity.this, SelectActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("user_name",user_name);
                             intent.putExtra("user_email",user_email);
                             startActivity(intent);

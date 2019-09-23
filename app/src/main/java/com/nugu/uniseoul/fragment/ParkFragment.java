@@ -33,7 +33,7 @@ public class ParkFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.history_fragment, container, false);
+        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_course_category, container, false);
         recyclerView = (RecyclerView)rootView.findViewById(R.id.main_recyclerview);
 
         recyclerView.setHasFixedSize(true);

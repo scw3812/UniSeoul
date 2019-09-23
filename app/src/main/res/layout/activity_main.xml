@@ -8,45 +8,51 @@
     tools:context=".MainActivity"
     android:weightSum="10">
 
-    <include layout="@layout/toolbar" />
-
-    <LinearLayout
+    <com.nugu.uniseoul.viewpager.SwipeViewPager
+        android:id="@+id/main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="10">
+        android:layout_weight="10"/>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/main_course_tablayout"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#40666666">
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="역사"/>
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="문화"/>
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="공원"/>
-        </com.google.android.material.tabs.TabLayout>
+<!--    <include layout="@layout/toolbar" />-->
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/main_top_viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="20dp"/>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_weight="10">-->
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/main_viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+<!--        <com.google.android.material.tabs.TabLayout-->
+<!--            android:id="@+id/main_course_tablayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:background="#40666666">-->
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="역사"/>-->
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="문화"/>-->
+<!--            <com.google.android.material.tabs.TabItem-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="공원"/>-->
+<!--        </com.google.android.material.tabs.TabLayout>-->
 
-    </LinearLayout>
+<!--        <androidx.viewpager.widget.ViewPager-->
+<!--            android:id="@+id/main_top_viewpager"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:layout_marginBottom="20dp"/>-->
+
+<!--        <androidx.viewpager.widget.ViewPager-->
+<!--            android:id="@+id/main_viewpager"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
+
+<!--    </LinearLayout>-->
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/main_tablayout"

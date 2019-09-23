@@ -24,7 +24,7 @@ public class SlideRecyclerViewAdapter extends RecyclerView.Adapter<SlideRecycler
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.slide_row, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.row_slide, parent, false);
         return new MyViewHolder(view);
     }
 
