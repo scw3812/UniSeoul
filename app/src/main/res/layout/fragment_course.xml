@@ -34,17 +34,39 @@
                 android:layout_height="match_parent"
                 android:text="공원"/>
         </com.google.android.material.tabs.TabLayout>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/main_course_top_viewpager"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_height="wrap_content">
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/main_course_top_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_margin="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="198dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginRight="3dp"
+                android:background="#98000000"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="5dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="5dp"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/main_course_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

@@ -1,11 +1,16 @@
 package com.nugu.uniseoul;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
 import com.nugu.uniseoul.adapter.MainFragmentAdapter;
+import com.nugu.uniseoul.fragment.CourseFragment;
+import com.nugu.uniseoul.fragment.HistoryFragment;
 import com.nugu.uniseoul.viewpager.SwipeViewPager;
 
 public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
@@ -19,6 +24,10 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        String user_name = (String) intent.getStringExtra("user_name");
+        String user_email = (String) intent.getStringExtra("user_email");
+
         tabLayout = (TabLayout)findViewById(R.id.main_tablayout);
         viewPager = (SwipeViewPager)findViewById(R.id.main_viewpager);
 
@@ -26,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
         tabLayout.addOnTabSelectedListener(this);
 
-        mainFragmentAdapter = new MainFragmentAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        mainFragmentAdapter = new MainFragmentAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), user_name, user_email);
         viewPager.setAdapter(mainFragmentAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         viewPager.setPagingDisabled();

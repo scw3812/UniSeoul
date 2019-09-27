@@ -4,21 +4,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.nugu.uniseoul.MapActivity;
 import com.nugu.uniseoul.fragment.CourseFragment;
-import com.nugu.uniseoul.fragment.HistoryFragment;
 import com.nugu.uniseoul.fragment.MyPageFragment;
-import com.nugu.uniseoul.fragment.ParkFragment;
-import com.nugu.uniseoul.fragment.TrailFragment;
 import com.nugu.uniseoul.fragment.VolFragment;
 
 public class MainFragmentAdapter extends FragmentStatePagerAdapter {
 
     private int mPageCount;
+    private String user_name;
+    private String user_email;
 
-    public MainFragmentAdapter(FragmentManager fm, int pageCount){
+    public MainFragmentAdapter(FragmentManager fm, int pageCount, String user_name, String user_email){
         super(fm);
         this.mPageCount = pageCount;
+        this.user_name = user_name;
+        this.user_email = user_email;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class MainFragmentAdapter extends FragmentStatePagerAdapter {
                 CourseFragment courseFragment = new CourseFragment();
                 return courseFragment;
             case 1 :
-                MyPageFragment myPageFragment = new MyPageFragment();
+                MyPageFragment myPageFragment = new MyPageFragment(user_name,user_email);
                 return myPageFragment;
             case 2 :
                 VolFragment volFragment = new VolFragment();

@@ -1,10 +1,12 @@
 package com.nugu.uniseoul.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,14 +35,27 @@ public class SlideRecyclerViewAdapter extends RecyclerView.Adapter<SlideRecycler
         switch (position) {
             case 0:
                 holder.imageView.setImageResource(R.drawable.background_seoul);
+                TextView textView1 = new TextView(context);
+                textView1.setText("#서울");
+                textView1.setBackgroundResource(R.drawable.hashtag_box);
+                textView1.setTypeface(null, Typeface.ITALIC);
+                holder.linearLayout.addView(textView1);
                 break;
             case 1:
                 holder.imageView.setImageResource(R.drawable.goong);
-                holder.textView.setText("경복궁 야간개장");
+                TextView textView2 = new TextView(context);
+                textView2.setText("#경복궁");
+                textView2.setBackgroundResource(R.drawable.hashtag_box);
+                textView2.setTypeface(null, Typeface.ITALIC);
+                holder.linearLayout.addView(textView2);
                 break;
             case 2:
                 holder.imageView.setImageResource(R.drawable.tower);
-                holder.textView.setText("남산타워");
+                TextView textView3 = new TextView(context);
+                textView3.setText("#남산타워");
+                textView3.setBackgroundResource(R.drawable.hashtag_box);
+                textView3.setTypeface(null, Typeface.ITALIC);
+                holder.linearLayout.addView(textView3);
                 break;
         }
     }
@@ -53,14 +68,13 @@ public class SlideRecyclerViewAdapter extends RecyclerView.Adapter<SlideRecycler
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView imageView;
-        private TextView textView;
+        private LinearLayout linearLayout;
 
         public MyViewHolder(View itemView){
             super(itemView);
 
             imageView = (ImageView)itemView.findViewById(R.id.slide_image);
-            textView = (TextView)itemView.findViewById(R.id.slide_title);
-
+            linearLayout = (LinearLayout)itemView.findViewById(R.id.slide_hashtag_layout);
         }
     }
 }

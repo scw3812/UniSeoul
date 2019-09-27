@@ -15,7 +15,9 @@ import com.nugu.uniseoul.CourseActivity;
 import com.nugu.uniseoul.R;
 import com.nugu.uniseoul.data.CourseData;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecyclerViewAdapter.MyViewHolder>{
     private List<CourseData> mDataset;
@@ -39,7 +41,6 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
     }
 
     public CourseRecyclerViewAdapter(List<CourseData> myDataset, Context context) {
-
         mDataset = myDataset;
         this.context = context;
     }
@@ -60,7 +61,7 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
         //뷰에 코스데이터 값 넣기
         final CourseData course = mDataset.get(position);
         holder.course_textview.setText(course.getCourseTitle());
-        Glide.with(context).load(course.getCourseImage()).into(holder.course_imageview);
+        Glide.with(context).load(course.getCourseImage()).placeholder(R.drawable.uniseoul_placeholder).into(holder.course_imageview);
         if(course.getCourseTripBarrierFree() == null){
             holder.course_accessible.setVisibility(View.INVISIBLE);
         }

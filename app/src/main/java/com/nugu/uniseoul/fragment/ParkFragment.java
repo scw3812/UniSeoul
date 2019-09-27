@@ -27,7 +27,7 @@ import java.util.List;
 public class ParkFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private CourseRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Nullable
@@ -73,29 +73,32 @@ public class ParkFragment extends Fragment {
 
             for(int i = 0; i < arrayData1.length(); i++){
                 JSONObject obj = arrayData1.getJSONObject(i);
-                if(!obj.getString("theme_cd").equals("02")){
+                if(!obj.getString("theme_cd").equals("03")){
                     continue;
                 }
                 CourseData courseData = new CourseData();
                 courseData.setCourseTitle(obj.getString("facility_nm"));
                 courseData.setCourseImage(obj.getString("images"));
-                courseData.setCourseContents(obj.getString("aummary"));
+                courseData.setCourseHomepage(obj.getString("homepage"));
+                courseData.setCourseTel(obj.getString("tel"));
                 courseData.setCourseAddress(obj.getString("address"));
                 courseData.setCourseBarrierFree(new String[]{"N","N","N","N","N","N","N","N","N","N","N","N"});
                 courseData.setCourseTripBarrierFree(obj.getString("resources").split("\"")[3]);
                 courseData.setCourseTheme(obj.getString("theme_cd"));
+                courseData.setCourseTripBarrierFree(obj.getString("resources"));
 
                 course.add(courseData);
             }
             for(int i = 0; i < arrayData2.length(); i++){
                 JSONObject obj = arrayData2.getJSONObject(i);
-                if(!obj.getString("theme_cd").equals("02")){
+                if(!obj.getString("theme_cd").equals("03")){
                     continue;
                 }
                 CourseData courseData = new CourseData();
                 courseData.setCourseTitle(obj.getString("sisulname"));
                 courseData.setCourseImage(obj.getString("images"));
-                courseData.setCourseContents(obj.getString("homepage"));
+                courseData.setCourseHomepage(obj.getString("homepage"));
+                courseData.setCourseTel(obj.getString("tel"));
                 courseData.setCourseAddress(obj.getString("addr"));
                 courseData.setCourseBarrierFree(new String[]{obj.getString("st1"),obj.getString("st2"),
                         obj.getString("st3"),obj.getString("st4"),obj.getString("st5"),

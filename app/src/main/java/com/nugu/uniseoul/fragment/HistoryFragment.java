@@ -1,6 +1,8 @@
 package com.nugu.uniseoul.fragment;
 
 import android.os.Bundle;
+import android.text.style.BulletSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nugu.uniseoul.MainActivity;
 import com.nugu.uniseoul.R;
 import com.nugu.uniseoul.adapter.CourseRecyclerViewAdapter;
 import com.nugu.uniseoul.data.CourseData;
@@ -27,7 +30,7 @@ import java.util.List;
 public class HistoryFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private CourseRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Nullable
@@ -80,11 +83,13 @@ public class HistoryFragment extends Fragment {
 
                 courseData.setCourseTitle(obj.getString("facility_nm"));
                 courseData.setCourseImage(obj.getString("images"));
-                courseData.setCourseContents(obj.getString("aummary"));
+                courseData.setCourseHomepage(obj.getString("homepage"));
+                courseData.setCourseTel(obj.getString("tel"));
                 courseData.setCourseAddress(obj.getString("address"));
                 courseData.setCourseBarrierFree(new String[]{"N","N","N","N","N","N","N","N","N","N","N","N"});
-                courseData.setCourseTripBarrierFree(obj.getString("resources").split("\"")[3]);
+                courseData.setCourseTripBarrierFree(obj.getString("resources"));
                 courseData.setCourseTheme(obj.getString("theme_cd"));
+                courseData.setCourseTripBarrierFree(obj.getString("resources"));
 
                 course.add(courseData);
             }
@@ -96,7 +101,8 @@ public class HistoryFragment extends Fragment {
                 CourseData courseData = new CourseData();
                 courseData.setCourseTitle(obj.getString("sisulname"));
                 courseData.setCourseImage(obj.getString("images"));
-                courseData.setCourseContents(obj.getString("homepage"));
+                courseData.setCourseHomepage(obj.getString("homepage"));
+                courseData.setCourseTel(obj.getString("tel"));
                 courseData.setCourseAddress(obj.getString("addr"));
                 courseData.setCourseBarrierFree(new String[]{obj.getString("st1"),obj.getString("st2"),
                         obj.getString("st3"),obj.getString("st4"),obj.getString("st5"),

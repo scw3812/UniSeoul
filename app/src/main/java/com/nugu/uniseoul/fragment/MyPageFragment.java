@@ -14,6 +14,15 @@ import com.nugu.uniseoul.R;
 
 public class MyPageFragment extends Fragment {
 
+    String user_name;
+    String user_email;
+
+    public MyPageFragment(String user_name, String user_email){
+        this.user_name = user_name;
+        this.user_email = user_email;
+        System.out.println("frag" +user_name + user_email);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -5,11 +5,20 @@ import java.io.Serializable;
 public class CourseData implements Serializable {
     private String courseImage;
     private String courseTitle;
-    private String courseContents;
+    private String courseHomepage;
     private String courseAddress;
     private String[] courseBarrierFree;
     private String courseTripBarrierFree;
     private String courseTheme;
+    private String courseTel;
+
+    public String getCourseTel() {
+        return courseTel;
+    }
+
+    public void setCourseTel(String courseTel) {
+        this.courseTel = courseTel;
+    }
 
     public String getCourseTheme() {
         return courseTheme;
@@ -43,12 +52,12 @@ public class CourseData implements Serializable {
         this.courseAddress = address;
     }
 
-    public String getCourseContents() {
-        return courseContents;
+    public String getCourseHomepage() {
+        return courseHomepage;
     }
 
-    public void setCourseContents(String courseContents) {
-        this.courseContents = courseContents;
+    public void setCourseHomepage(String courseHomepage) {
+        this.courseHomepage = courseHomepage;
     }
 
     public String getCourseImage() {

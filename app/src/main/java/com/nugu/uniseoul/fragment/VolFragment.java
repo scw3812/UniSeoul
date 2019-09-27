@@ -60,10 +60,10 @@ public class VolFragment extends Fragment {
 
         Bundle bundle = intent.getExtras();
 
-//        final String user_name = bundle.getString("user_name");
-//        final String user_email = bundle.getString("user_email");
-        final String user_name = "seo";
-        final String user_email = "scw3812@naver.com";
+        final String user_name = bundle.getString("user_name");
+        final String user_email = bundle.getString("user_email");
+//        final String user_name = "seo";
+//        final String user_email = "scw3812@naver.com";
 
 
         new Thread() {

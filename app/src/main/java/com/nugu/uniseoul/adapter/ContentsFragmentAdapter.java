@@ -5,8 +5,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.nugu.uniseoul.fragment.HistoryFragment;
+import com.nugu.uniseoul.fragment.CultureFragment;
 import com.nugu.uniseoul.fragment.ParkFragment;
-import com.nugu.uniseoul.fragment.TrailFragment;
 
 public class ContentsFragmentAdapter extends FragmentStatePagerAdapter {
 
@@ -24,11 +24,11 @@ public class ContentsFragmentAdapter extends FragmentStatePagerAdapter {
                 HistoryFragment historyFragment = new HistoryFragment();
                 return historyFragment;
             case 1 :
+                CultureFragment cultureFragment = new CultureFragment();
+                return cultureFragment;
+            case 2 :
                 ParkFragment parkFragment = new ParkFragment();
                 return parkFragment;
-            case 2 :
-                TrailFragment trailFragment = new TrailFragment();
-                return trailFragment;
             default :
                 return null;
         }

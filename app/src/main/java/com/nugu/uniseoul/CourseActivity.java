@@ -19,12 +19,13 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
     private TextView textViewTitle;
     private ImageView courseImage;
-    private TextView textViewContent;
+    private TextView textViewContentHompage;
+    private TextView textViewContentTel;
     private ImageButton mapButton;
     private ImageView[] courseBarrierFree;
-    private ImageView courseImageBarrierFree;
     private Button readReviewBtn;
     private Button writeReviewBtn;
+    private TextView textCourseTripBarrierFree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +34,25 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
         Intent intent = getIntent();
         final CourseData courseData = (CourseData)intent.getSerializableExtra("course");
-        String content = courseData.getCourseContents();
+        String contentHompage = "홈페이지가 없습니다.";
+        if(courseData.getCourseHomepage() != null){
+            contentHompage = "홈페이지 "+courseData.getCourseHomepage();
+        }
+        String contentTel = "전화번호가 없습니다.";
+        if(courseData.getCourseTel() != null){
+            contentTel = "Tel."+courseData.getCourseTel();
+        }
+        String tripBarrierFree = null;
+        if(courseData.getCourseTripBarrierFree() != null){
+            tripBarrierFree = courseData.getCourseTripBarrierFree();
+        }
         String title = courseData.getCourseTitle();
         String[] barrierFree = courseData.getCourseBarrierFree();
 
-        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
-            content =  Html.fromHtml(content).toString();
-        }else {
-            content = Html.fromHtml(content, Html.FROM_HTML_MODE_LEGACY).toString();
-        }
-
         textViewTitle = (TextView)findViewById(R.id.course_title);
         courseImage = (ImageView)findViewById(R.id.course_image);
-        textViewContent = (TextView)findViewById(R.id.course_content);
+        textViewContentHompage = (TextView)findViewById(R.id.course_content_hompage);
+        textViewContentTel = (TextView)findViewById(R.id.course_content_tel);
         mapButton = (ImageButton)findViewById(R.id.course_map_button);
         courseBarrierFree = new ImageView[]{(ImageView)findViewById(R.id.course_barrierfree1),(ImageView)findViewById(R.id.course_barrierfree2),
                 (ImageView)findViewById(R.id.course_barrierfree3),(ImageView)findViewById(R.id.course_barrierfree4),
@@ -53,16 +60,12 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
                 (ImageView)findViewById(R.id.course_barrierfree7),(ImageView)findViewById(R.id.course_barrierfree8),
                 (ImageView)findViewById(R.id.course_barrierfree9),(ImageView)findViewById(R.id.course_barrierfree10),
                 (ImageView)findViewById(R.id.course_barrierfree11),(ImageView)findViewById(R.id.course_barrierfree12)};
-        courseImageBarrierFree = (ImageView)findViewById(R.id.course_image_barrierfree);
+        textCourseTripBarrierFree = (TextView)findViewById(R.id.course_trip_barrierfree);
 
         textViewTitle.setText(title);
-        Glide.with(this).load(courseData.getCourseImage()).into(courseImage);
-        textViewContent.setText(content);
-        if(courseData.getCourseTripBarrierFree() == null){
-            courseImageBarrierFree.setVisibility(View.GONE);
-        }else{
-            Glide.with(this).load(courseData.getCourseTripBarrierFree()).into(courseImageBarrierFree);
-        }
+        Glide.with(this).load(courseData.getCourseImage()).placeholder(R.drawable.uniseoul_placeholder).into(courseImage);
+        textViewContentHompage.setText(contentHompage);
+        textViewContentTel.setText(contentTel);
 
         //무장애 여행 아이콘 구현 및 클릭 이벤트 설정
         for(int i = 0; i<barrierFree.length; i++){
@@ -71,6 +74,14 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
                 continue;
             }
             courseBarrierFree[i].setOnClickListener(this);
+        }
+
+        if(tripBarrierFree != null){
+            if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
+                textCourseTripBarrierFree.setText(Html.fromHtml(tripBarrierFree).toString());
+            }else {
+                textCourseTripBarrierFree.setText(Html.fromHtml(tripBarrierFree, Html.FROM_HTML_MODE_LEGACY).toString());
+            }
         }
 
         writeReviewBtn = findViewById(R.id.writeReviewBtn);
