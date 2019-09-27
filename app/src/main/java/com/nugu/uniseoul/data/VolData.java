@@ -12,6 +12,9 @@ public class VolData implements Serializable {
     private String max_helper;
     private String s_date;
     private String e_date;
+    private String r_date;
+    private String r_time;
+    private String v_place;
 
 
 
@@ -58,18 +61,30 @@ public class VolData implements Serializable {
     public void setCurrent_helper(String content) { this.current_helper = content;}
 
 
-    public String getS_date() {
-        return s_date;
-    }
-    public void setS_date(String content) { this.s_date = content;}
-
-
     public String getE_date() {
         return e_date;
     }
     public void setE_date(String content) { this.e_date = content;}
 
+    public String getS_date() {
+        return s_date;
+    }
+    public void setS_date(String content) { this.s_date = content;}
 
+    public String getR_date() {
+        return r_date;
+    }
+    public void setR_date(String content) { this.r_date = content;}
+
+    public String getR_time() {
+        return r_time;
+    }
+    public void setR_time(String content) { this.r_time = content;}
+
+    public String getPlace() {
+        return v_place;
+    }
+    public void setPlace(String content) { this.v_place = content;}
 
 
 }

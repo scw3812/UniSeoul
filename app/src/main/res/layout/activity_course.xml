@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="여행지 정보"
             android:textColor="#ffffff"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/colorPrimary3"/>
        <TextView
            android:id="@+id/course_content_hompage"
            android:layout_width="match_parent"
@@ -60,28 +60,32 @@
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:text="후기"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/colorPrimary3"/>
 
         <LinearLayout
+            android:id="@+id/course_review_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="10">
-
-            <Button
-                android:id="@+id/writeReviewBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:text="리뷰 작성하기">
-            </Button>
-            <Button
-                android:id="@+id/readReviewBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:text="리뷰 확인하기">
-            </Button>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:clickable="true"
+            >
+            <TextView
+                android:id="@+id/course_review_title"
+                android:layout_width="match_parent"
+                android:layout_height="20sp"
+                android:layout_marginBottom="10sp"
+                android:paddingLeft="15sp"
+                android:text="title"
+                android:textStyle="bold" />
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/course_review_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:maxLines="3"
+                android:text="content" />
         </LinearLayout>
 
         <LinearLayout

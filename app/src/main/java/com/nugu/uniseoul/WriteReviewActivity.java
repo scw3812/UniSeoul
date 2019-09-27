@@ -9,6 +9,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.nugu.uniseoul.data.CourseData;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -28,17 +32,26 @@ public class WriteReviewActivity extends AppCompatActivity {
     Button sendPostData;
     EditText titleEditText;
     EditText contentEditText;
+    FirebaseAuth mAuth;
 
+    String user_email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_review);
 
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = mAuth.getCurrentUser();
+
+        user_email = user.getEmail();
+
         final Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final String cid = bundle.getString("cid");
         Log.d("cid",cid);
+
+        final CourseData courseData = (CourseData)intent.getSerializableExtra("course");
 
         final EditText titleEditText = findViewById(R.id.writeTitle);
         final EditText contentEditText = findViewById(R.id.writeContent);
@@ -55,17 +68,20 @@ public class WriteReviewActivity extends AppCompatActivity {
                 new Thread() {
                     public void run() {
                         Log.d("title,value",title_value+content_value);
-                        select_doProcess(cid,title_value,content_value);
+                        select_doProcess(cid,title_value,content_value,user_email);
 
                     }
                 }.start();
                 Toast.makeText(getApplicationContext(), "작성완료!", Toast.LENGTH_LONG).show();
 
+                Intent intent = new Intent(WriteReviewActivity.this,CourseActivity.class);
+                intent.putExtra("course",courseData);
+                startActivity(intent);
             }
         });
     }
 
-    private void select_doProcess(String cid, String title, String content) {
+    private void select_doProcess(String cid, String title, String content, String user_email) {
 
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost("http://15.164.80.191:3000/create_review");
@@ -80,6 +96,9 @@ public class WriteReviewActivity extends AppCompatActivity {
                     "title", URLDecoder.decode(title, "UTF-8")));
             nameValues.add(new BasicNameValuePair(
                     "content", URLDecoder.decode(content, "UTF-8")));
+            nameValues.add(new BasicNameValuePair(
+                    "user_email", URLDecoder.decode(user_email, "UTF-8")));
+
 
 
 

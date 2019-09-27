@@ -16,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.nugu.uniseoul.data.CourseData;
 import com.nugu.uniseoul.data.VolData;
+import com.nugu.uniseoul.fragment.VolFragment;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -35,11 +38,11 @@ public class VolListActivity extends AppCompatActivity {
 
     private TextView textViewTitle;
     private TextView textViewContent;
+    private TextView during_textview;
+    private TextView date_textview;
+    private TextView place_textview;
 
-    private TextView textViewS_date;
-    private TextView textViewE_date;
-
-    private Button uni_btn;
+    //private Button uni_btn;
     private Button vol_btn;
 
 
@@ -77,19 +80,25 @@ public class VolListActivity extends AppCompatActivity {
         textViewTitle.setText(v_title);
         textViewContent =  (TextView)findViewById(R.id.vol_list_content_textView);
         textViewContent.setText(v_content);
-        textViewS_date =  (TextView)findViewById(R.id.vol_list_s_date_textView);
-        textViewS_date.setText(s_date);
-        textViewE_date =  (TextView)findViewById(R.id.vol_list_e_date_textView);
-        textViewE_date.setText(e_date);
 
 
-        uni_btn =  (Button)findViewById(R.id.vol_list_uni_btn);
-        uni_btn.setText("신청 인원 " + c_uni + "/" + m_uni );
+        during_textview = (TextView)findViewById(R.id.vol_during);
+        during_textview.setText("신청 기간 : " + volData.getS_date() + " ~ " + volData.getE_date());
+
+        date_textview = (TextView)findViewById(R.id.vol_date);
+        date_textview.setText("봉사 일시 : " + volData.getR_date() + " -> " + volData.getR_time());
+
+        place_textview = (TextView)findViewById(R.id.vol_place);
+        place_textview.setText("봉사 장소 : " + volData.getPlace());
+
+
+        //uni_btn =  (Button)findViewById(R.id.vol_list_uni_btn);
+        //uni_btn.setText("신청하기");
 
 
         vol_btn =  (Button)findViewById(R.id.vol_list_vol_btn);
-        vol_btn.setText("신청 인원 " + c_helper + "/" + m_helper );
 
+        /*
         uni_btn.setOnClickListener(new View.OnClickListener( ) {
             @Override
             public void onClick(View v) {
@@ -105,7 +114,7 @@ public class VolListActivity extends AppCompatActivity {
 
             }
         });
-
+        */
         vol_btn.setOnClickListener(new View.OnClickListener( ) {
             @Override
             public void onClick(View v) {
@@ -120,6 +129,7 @@ public class VolListActivity extends AppCompatActivity {
 
             }
         });
+
 
 
     }

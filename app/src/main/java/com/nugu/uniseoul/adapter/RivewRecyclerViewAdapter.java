@@ -30,12 +30,15 @@ public class RivewRecyclerViewAdapter extends RecyclerView.Adapter<RivewRecycler
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title_textview;
+        private TextView email_textview;
         private TextView content_textview;
+
 
 
         public MyViewHolder(View v) {
             super(v);
             title_textview = (TextView)v.findViewById(R.id.rowTitle);
+            email_textview = (TextView)v.findViewById(R.id.rowEmail);
             content_textview = (TextView) v.findViewById(R.id.rowContent);
         }
     }
@@ -48,7 +51,7 @@ public class RivewRecyclerViewAdapter extends RecyclerView.Adapter<RivewRecycler
 
     //1row
     @Override
-    public RivewRecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+    public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                                     int viewType) {
         LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.row_review, parent, false);
@@ -64,7 +67,9 @@ public class RivewRecyclerViewAdapter extends RecyclerView.Adapter<RivewRecycler
 
 
         holder.title_textview.setText(review.getTitle());
+        holder.email_textview.setText(review.getEmail());
         holder.content_textview.setText(review.getContent());
+
 
     }
 

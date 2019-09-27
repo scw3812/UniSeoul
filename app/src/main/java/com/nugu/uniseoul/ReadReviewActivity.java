@@ -3,6 +3,8 @@ package com.nugu.uniseoul;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nugu.uniseoul.adapter.RivewRecyclerViewAdapter;
+import com.nugu.uniseoul.data.CourseData;
 import com.nugu.uniseoul.data.ReviewData;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,8 +33,7 @@ public class ReadReviewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private List<ReviewData> reviewDatas;
-    String[] reviewData = null;
+    private ImageView review_btn;
 
 
     @Override
@@ -43,6 +45,8 @@ public class ReadReviewActivity extends AppCompatActivity {
         //recyclerView
         recyclerView = (RecyclerView) findViewById(R.id.review_recyclerview);
 
+
+
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
@@ -53,18 +57,38 @@ public class ReadReviewActivity extends AppCompatActivity {
 
         Bundle bundle = intent.getExtras();
         final String cid = bundle.getString("cid");
+        final CourseData courseData = (CourseData)intent.getSerializableExtra("course");
 
 
-        new Thread() {
-            public void run() {
-          parse("http://15.164.80.191:3000/read_review/",cid);
+        review_btn = findViewById(R.id.review_btn);
+        review_btn.setOnClickListener(new View.OnClickListener( ) {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReadReviewActivity.this,WriteReviewActivity.class);
+                intent.putExtra("cid",cid);
+                intent.putExtra("course",courseData);
+                startActivity(intent);
             }
-        }.start();
+        });
 
+
+        Thread mThread= new Thread() {
+            public void run() {
+          parseReview("http://15.164.80.191:3000/read_review/",cid);
+            }
+        };
+        try{
+            mThread.join();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+
+        mThread.start();
 
     }
 
-    protected void parse(String addr, String cid){
+    protected void parseReview(String addr, String cid){
 
         String receiveMsg;
 
@@ -98,7 +122,6 @@ public class ReadReviewActivity extends AppCompatActivity {
             }
 
             try {
-
                 JSONObject jsonObj;
                 jsonObj = new JSONObject(buffer.toString());
                 Log.d("buffer",buffer.toString());
@@ -114,7 +137,8 @@ public class ReadReviewActivity extends AppCompatActivity {
                         ReviewData reviewData = new ReviewData();
 
                         reviewData.setTitle(obj.getString("title"));
-                        reviewData.setContent(obj.getString("content"));
+                        reviewData.setContent(obj.getString("content") + "\n");
+                        reviewData.setEmail(obj.getString("user_email"));
                         reviewDatas.add(reviewData);
                         }
 
@@ -132,7 +156,7 @@ public class ReadReviewActivity extends AppCompatActivity {
             ReviewData reviewData = new ReviewData();
 
             reviewData.setTitle("등록 된 리뷰가 없습니다.");
-            reviewData.setContent("\n 첫 리뷰를 작성해주세요  \n" );
+            reviewData.setContent("첫 리뷰를 작성해주세요" );
             reviews.add(reviewData);
 
             mAdapter = new RivewRecyclerViewAdapter(reviews, ReadReviewActivity.this);

@@ -2,11 +2,14 @@ package com.nugu.uniseoul.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,14 +32,20 @@ public class VolRecyclerViewAdapter extends RecyclerView.Adapter<VolRecyclerView
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title_textview;
-        private TextView content_textview;
+        private TextView during_textview;
+        private TextView date_textview;
+        private TextView place_textview;
+
 
 
         public MyViewHolder(View v) {
             super(v);
             title_textview = (TextView)v.findViewById(R.id.rowTitleVol);
-            content_textview = (TextView) v.findViewById(R.id.rowContentVol);
-        }
+            during_textview = (TextView)v.findViewById(R.id.row_during);
+            date_textview = (TextView)v.findViewById(R.id.row_date);
+            place_textview = (TextView)v.findViewById(R.id.row_place);
+
+    }
     }
 
     //constructor
@@ -58,7 +67,7 @@ public class VolRecyclerViewAdapter extends RecyclerView.Adapter<VolRecyclerView
 
     //1row
     @Override
-    public VolRecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+    public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                                   int viewType) {
         LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.row_vol, parent, false);
@@ -74,7 +83,9 @@ public class VolRecyclerViewAdapter extends RecyclerView.Adapter<VolRecyclerView
 
 
         holder.title_textview.setText(volData.getTitle());
-        holder.content_textview.setText(volData.getContent());
+        holder.during_textview.setText("신청 기간 : " + volData.getS_date() + " ~ " + volData.getE_date());
+        holder.date_textview.setText("봉사 일시 : " + volData.getR_date() + " -> " + volData.getR_time());
+        holder.place_textview.setText("봉사 장소 : " + volData.getPlace());
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener( ) {
@@ -102,6 +113,7 @@ public class VolRecyclerViewAdapter extends RecyclerView.Adapter<VolRecyclerView
             }
         });
 */
+
     }
 
     @Override

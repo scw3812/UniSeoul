@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.nugu.uniseoul.R;
 import com.nugu.uniseoul.adapter.RivewRecyclerViewAdapter;
 import com.nugu.uniseoul.adapter.VolRecyclerViewAdapter;
@@ -39,7 +41,9 @@ public class VolFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private List<VolData> reviews;
     String[] reviewData = null;
-
+    FirebaseAuth mAuth;
+    String user_name;
+    String user_email;
 
 
     @Nullable
@@ -60,23 +64,31 @@ public class VolFragment extends Fragment {
 
         Bundle bundle = intent.getExtras();
 
-        final String user_name = bundle.getString("user_name");
-        final String user_email = bundle.getString("user_email");
-//        final String user_name = "seo";
-//        final String user_email = "scw3812@naver.com";
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = mAuth.getCurrentUser();
+
+        user_name = user.getDisplayName();
+        user_email = user.getEmail();
 
 
-        new Thread() {
+        Thread mThread = new Thread() {
             public void run() {
-                parse("http://15.164.80.191:3000/vol_list/",user_name, user_email);
+                parseVol("http://15.164.80.191:3000/vol_list/",user_name, user_email);
                 //Thread.interrupted();
             }
-        }.start();
+        };
+
+        mThread.start();
+        try{
+            mThread.join();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
 
         return viewGroup;
     }
 
-    protected void parse(String addr,String user_name, String user_email){
+    protected void parseVol(String addr,String user_name, String user_email){
 
         String receiveMsg;
 
@@ -121,6 +133,12 @@ public class VolFragment extends Fragment {
 
                     volData.setMax_uni(obj.getString("max_uni"));
                     volData.setCurrent_uni(obj.getString("current_uni"));
+
+                    volData.setR_date(obj.getString("r_date"));
+                    volData.setR_time(obj.getString("r_time"));
+
+                    volData.setPlace(obj.getString("v_place"));
+
 
                     volDatas.add(volData);
                 }

@@ -25,15 +25,14 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".ReadReviewActivity" />
-        <activity android:name=".SelectActivity" />
+        <activity android:name=".VolListActivity" />
+        <activity android:name=".WriteReviewActivity" />
         <activity android:name=".fragment.VolFragment" />
         <activity android:name=".fragment.CourseFragment">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".VolListActivity" />
-        <activity android:name=".WriteReviewActivity" />
         <activity
             android:name=".LoadingActivity"
             android:theme="@style/LoadingTheme">

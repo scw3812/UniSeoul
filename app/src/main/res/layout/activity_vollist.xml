@@ -3,11 +3,27 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        card_view:cardCornerRadius="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:background="#45af31"/>
     <TextView
         android:id="@+id/vol_list_title_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
+        android:textStyle="bold"
         android:text="title"
         android:textAlignment="center"
         android:layout_margin="20sp"
@@ -18,7 +34,7 @@
         android:id="@+id/vol_list_content_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:text="content"
         android:textAlignment="center"
         android:layout_margin="20sp"
@@ -30,31 +46,42 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
         android:layout_marginBottom="20sp"
+        android:orientation="vertical"
+        android:layout_margin="15sp"
         >
 
         <TextView
-            android:layout_width="wrap_content"
+            android:paddingLeft="5sp"
+            android:id="@+id/vol_during"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="신청 기간 :  "
-            android:textSize="20sp"
-            ></TextView>
+            android:text="신청기간 ->"
+            android:textSize="18sp"
+            android:maxLines="5"
+            android:ellipsize="end"
+            />
+
         <TextView
-            android:id="@+id/vol_list_s_date_textView"
-            android:layout_width="wrap_content"
+            android:paddingLeft="5sp"
+            android:id="@+id/vol_date"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="s_date"></TextView>
+            android:text="일시 ->"
+            android:textSize="18sp"
+            android:maxLines="5"
+            android:ellipsize="end"
+            />
         <TextView
-            android:layout_width="wrap_content"
+            android:paddingLeft="5sp"
+            android:id="@+id/vol_place"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" ~ "
-            android:textSize="20sp"></TextView>
-        <TextView
-            android:id="@+id/vol_list_e_date_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="e_date"></TextView>
+            android:text="장소 ->"
+            android:textSize="18sp"
+            android:maxLines="5"
+            android:ellipsize="end"
+            />
+
     </LinearLayout>
 
 
@@ -63,6 +90,7 @@
         android:layout_height="match_parent"
         android:weightSum="10"
         >
+        <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,6 +110,7 @@
             android:id="@+id/vol_list_uni_btn"
             android:text="도움 신청하기"></Button>
     </LinearLayout>
+    -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,22 +118,24 @@
         android:orientation="vertical"
         android:layout_weight="5">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" 봉사 신청하기"
-            android:textAlignment="center"
 
-            ></TextView>
         <Button
-            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/vol_list_vol_btn"
-            android:text="봉사 신청하기">
+            android:text="신청하기">
 
         </Button>
+        -->
     </LinearLayout>
 
+
     </LinearLayout>
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
 
 </LinearLayout>

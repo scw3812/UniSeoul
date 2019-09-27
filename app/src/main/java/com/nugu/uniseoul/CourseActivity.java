@@ -6,14 +6,27 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.nugu.uniseoul.data.CourseData;
+import com.nugu.uniseoul.data.ReviewData;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.net.URLEncoder;
 
 public class CourseActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,8 +36,10 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     private TextView textViewContentTel;
     private ImageButton mapButton;
     private ImageView[] courseBarrierFree;
-    private Button readReviewBtn;
-    private Button writeReviewBtn;
+    private TextView reviewTitle;
+    private TextView reviewContent;
+    private LinearLayout reviewLayout;
+    private ReviewData reviewData;
     private TextView textCourseTripBarrierFree;
 
     @Override
@@ -84,24 +99,35 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
 
-        writeReviewBtn = findViewById(R.id.writeReviewBtn);
-        readReviewBtn = findViewById(R.id.readReviewBtn);
+        String cid = title;
+        reviewData = new ReviewData();
 
-        writeReviewBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CourseActivity.this,WriteReviewActivity.class);
-                Log.d("cid",title);
-                intent.putExtra("cid",title);
-                startActivity(intent);
+        reviewTitle = findViewById(R.id.course_review_title);
+        reviewContent = findViewById(R.id.course_review_content);
+
+
+        System.out.println("start");
+        Thread mThread= new Thread() {
+            public void run() {
+                System.out.println("thread start");
+                parseReview("http://15.164.80.191:3000/read_review/",cid);
             }
-        });
+        };
+        try{
+            mThread.join();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        mThread.start();
 
-        readReviewBtn.setOnClickListener(new View.OnClickListener(){
+        reviewLayout = findViewById(R.id.course_review_layout);
+
+        reviewLayout.setOnClickListener(new View.OnClickListener( ) {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(CourseActivity.this,ReadReviewActivity.class);
                 intent.putExtra("cid",title);
+                intent.putExtra("course",courseData);
                 startActivity(intent);
             }
         });
@@ -130,4 +156,73 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
     }
+
+    protected void parseReview(String addr, String cid){
+
+        String receiveMsg;
+
+        cid = cid.replace(" ","_");
+
+        //한글 cid encoading
+        try{
+            cid = URLEncoder.encode(cid,"utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        String url = addr.concat(cid);
+        Log.d("url",url);
+
+        String result = ""; //
+
+        InputStream is = null;
+        try {
+            is = new URL(url).openStream();
+            BufferedReader rd = new BufferedReader(new InputStreamReader(is, "utf-8"));
+            String str;
+            StringBuffer buffer = new StringBuffer();
+            while ((str = rd.readLine()) != null) {
+                buffer.append(str);
+            }
+
+            try {
+                JSONObject jsonObj;
+                jsonObj = new JSONObject(buffer.toString());
+                Log.d("buffer",buffer.toString());
+                JSONArray arrayDocs = jsonObj.getJSONArray("docs");
+
+                JSONObject obj = arrayDocs.getJSONObject(0);
+
+                Log.d("review", obj.toString());
+                //분류
+
+                reviewData.setTitle(obj.getString("title"));
+                reviewData.setContent(obj.getString("content"));
+                reviewData.setEmail(obj.getString("user_email"));
+
+                reviewTitle.setText(reviewData.getTitle());
+                reviewContent.setText(reviewData.getContent());
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+        catch (java.io.FileNotFoundException e1) {
+
+
+            reviewData.setTitle("등록 된 리뷰가 없습니다.");
+            reviewData.setContent("첫 리뷰를 작성해주세요" );
+
+            reviewTitle.setText(reviewData.getTitle());
+            reviewContent.setText(reviewData.getContent());
+
+            e1.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
