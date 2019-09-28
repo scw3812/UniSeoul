@@ -14,53 +14,19 @@
         android:layout_height="match_parent"
         android:layout_weight="10"/>
 
-<!--    <include layout="@layout/toolbar" />-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical"-->
-<!--        android:layout_weight="10">-->
-
-<!--        <com.google.android.material.tabs.TabLayout-->
-<!--            android:id="@+id/main_course_tablayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:background="#40666666">-->
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:text="역사"/>-->
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:text="문화"/>-->
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:text="공원"/>-->
-<!--        </com.google.android.material.tabs.TabLayout>-->
-
-<!--        <androidx.viewpager.widget.ViewPager-->
-<!--            android:id="@+id/main_top_viewpager"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:layout_marginBottom="20dp"/>-->
-
-<!--        <androidx.viewpager.widget.ViewPager-->
-<!--            android:id="@+id/main_viewpager"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
-
-<!--    </LinearLayout>-->
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/main_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
-        app:tabTextColor="#50af40">
+        app:tabTextColor="#474848">
 
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/main_tab_trip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:icon="@drawable/selector_trip"
+            android:text="여행정보"/>
         <com.google.android.material.tabs.TabItem
             android:id="@+id/main_tab_vol"
             android:layout_width="match_parent"
@@ -73,12 +39,7 @@
             android:layout_height="match_parent"
             android:icon="@drawable/selector_profile"
             android:text="My Page" />
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/main_tab_trip"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:icon="@drawable/selector_trip"
-            android:text="여행정보" />
+
 
     </com.google.android.material.tabs.TabLayout>
 

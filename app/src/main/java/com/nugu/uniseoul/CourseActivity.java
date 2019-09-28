@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,7 +41,9 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     private TextView reviewContent;
     private LinearLayout reviewLayout;
     private ReviewData reviewData;
-    private TextView textCourseTripBarrierFree;
+    private GridLayout gridLayout;
+    private ImageView[] courseTripBarrierFree;
+    private String[] tripBarrierFreeArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +52,27 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
 
         Intent intent = getIntent();
         final CourseData courseData = (CourseData)intent.getSerializableExtra("course");
-        String contentHompage = "홈페이지가 없습니다.";
-        if(courseData.getCourseHomepage() != null){
+        String contentHompage = null;
+        if(!courseData.getCourseHomepage().equals("null")){
             contentHompage = "홈페이지 "+courseData.getCourseHomepage();
+        }else{
+            contentHompage = "홈페이지가 없습니다.";
         }
-        String contentTel = "전화번호가 없습니다.";
-        if(courseData.getCourseTel() != null){
+        String contentTel = null;
+        if(!courseData.getCourseTel().equals("null")){
             contentTel = "Tel."+courseData.getCourseTel();
+        }else{
+            contentTel = "전화번호가 없습니다.";
         }
-        String tripBarrierFree = null;
+        tripBarrierFreeArray = null;
         if(courseData.getCourseTripBarrierFree() != null){
-            tripBarrierFree = courseData.getCourseTripBarrierFree();
+            String tripBarrierFree = null;
+            if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
+                tripBarrierFree = Html.fromHtml(courseData.getCourseTripBarrierFree()).toString();
+            }else {
+                tripBarrierFree = Html.fromHtml(courseData.getCourseTripBarrierFree(), Html.FROM_HTML_MODE_LEGACY).toString();
+            }
+            tripBarrierFreeArray = tripBarrierFree.split("!");
         }
         String title = courseData.getCourseTitle();
         String[] barrierFree = courseData.getCourseBarrierFree();
@@ -75,7 +88,10 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
                 (ImageView)findViewById(R.id.course_barrierfree7),(ImageView)findViewById(R.id.course_barrierfree8),
                 (ImageView)findViewById(R.id.course_barrierfree9),(ImageView)findViewById(R.id.course_barrierfree10),
                 (ImageView)findViewById(R.id.course_barrierfree11),(ImageView)findViewById(R.id.course_barrierfree12)};
-        textCourseTripBarrierFree = (TextView)findViewById(R.id.course_trip_barrierfree);
+        gridLayout = (GridLayout)findViewById(R.id.course_barrierfree_grid);
+        courseTripBarrierFree = new ImageView[]{(ImageView)findViewById(R.id.course_notice_parking),(ImageView)findViewById(R.id.course_notice_toilet),
+                (ImageView)findViewById(R.id.course_notice_wheelchair),(ImageView)findViewById(R.id.course_notice_braille),
+                (ImageView)findViewById(R.id.course_notice_lent),(ImageView)findViewById(R.id.course_notice_slope)};
 
         textViewTitle.setText(title);
         Glide.with(this).load(courseData.getCourseImage()).placeholder(R.drawable.uniseoul_placeholder).into(courseImage);
@@ -91,11 +107,17 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             courseBarrierFree[i].setOnClickListener(this);
         }
 
-        if(tripBarrierFree != null){
-            if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
-                textCourseTripBarrierFree.setText(Html.fromHtml(tripBarrierFree).toString());
-            }else {
-                textCourseTripBarrierFree.setText(Html.fromHtml(tripBarrierFree, Html.FROM_HTML_MODE_LEGACY).toString());
+        if(tripBarrierFreeArray == null){
+            gridLayout.setVisibility(View.GONE);
+        }else{
+            for(int i = 0; i<courseTripBarrierFree.length; i++){
+                final int num = i;
+                courseTripBarrierFree[i].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(CourseActivity.this,tripBarrierFreeArray[num*2+1],Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         }
 

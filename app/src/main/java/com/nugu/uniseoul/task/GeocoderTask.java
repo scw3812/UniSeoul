@@ -1,10 +1,7 @@
 package com.nugu.uniseoul.task;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-
-import com.nugu.uniseoul.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;

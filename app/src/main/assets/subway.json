@@ -69,7 +69,7 @@
 {"line_num":"경의선","station_cd":"1219","station_nm_eng":"Yongmun","station_nm":"용문","fr_code":"K137"},
 {"line_num":"경의선","station_cd":"1220","station_nm_eng":"Jipyeong","station_nm":"지평","fr_code":"K138"},
 {"line_num":"경의선","station_cd":"1251","station_nm_eng":"Seoul Station","station_nm":"서울","fr_code":"P313"},
-{"line_num":"경의선","station_cd":"1252","station_nm_eng":"Sinchon","station_nm":"신촌","fr_code":"P312"},
+{"line_num":"경의선","station_cd":"1252","station_nm_eng":"Sinchon","station_nm":"신촌(경의중앙선)","fr_code":"P312"},
 {"line_num":"경의선","station_cd":"1261","station_nm_eng":"Hyochang Park","station_nm":"효창공원앞","fr_code":"K826"},
 {"line_num":"경의선","station_cd":"1262","station_nm_eng":"Gongdeok","station_nm":"공덕","fr_code":"K312"},
 {"line_num":"2호선","station_cd":"0215","station_nm_eng":"Jamsillaru","station_nm":"잠실나루","fr_code":"215"},

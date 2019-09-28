@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".CourseActivity"
         android:orientation="vertical">
         <LinearLayout
@@ -16,7 +16,7 @@
             android:gravity="center_vertical">
             <TextView
                 android:id="@+id/course_title"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
                 android:text="title"
@@ -36,31 +36,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:layout_marginVertical="20dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="여행지 정보"
             android:textColor="#ffffff"
-            android:background="@color/colorPrimary3"/>
+            android:background="@color/colorPrimary3"
+            android:layout_marginBottom="10dp" />
        <TextView
            android:id="@+id/course_content_hompage"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text="http" />
+           android:text="http"
+           android:autoLink="web"/>
         <TextView
             android:id="@+id/course_content_tel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="전화번호"/>
+            android:text="전화번호"
+            android:autoLink="phone"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
             android:text="후기"
-            android:background="@color/colorPrimary3"/>
+            android:background="@color/colorPrimary3"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"/>
 
         <LinearLayout
             android:id="@+id/course_review_layout"
@@ -68,8 +74,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#ffffff"
-            android:clickable="true"
-            >
+            android:clickable="true">
             <TextView
                 android:id="@+id/course_review_title"
                 android:layout_width="match_parent"
@@ -87,6 +92,14 @@
                 android:maxLines="3"
                 android:text="content" />
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="편의시설 정보"
+            android:textColor="#ffffff"
+            android:background="@color/colorPrimary3"
+            android:layout_marginBottom="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -169,10 +182,56 @@
                 android:layout_weight="1"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/course_trip_barrierfree"
+        <GridLayout
+            android:id="@+id/course_barrierfree_grid"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:columnCount="2">
 
+                <ImageView
+                    android:id="@+id/course_notice_parking"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/notice_parking"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <ImageView
+                    android:id="@+id/course_notice_toilet"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/notice_toilet"/>
+
+                <ImageView
+                    android:id="@+id/course_notice_wheelchair"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/notice_wheelchair"
+                    android:layout_marginBottom="10dp"/>
+
+                <ImageView
+                    android:id="@+id/course_notice_braille"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/notice_braille"/>
+
+                <ImageView
+                    android:id="@+id/course_notice_lent"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/notice_lent"/>
+
+                <ImageView
+                    android:id="@+id/course_notice_slope"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/notice_slope"/>
+        </GridLayout>
     </LinearLayout>
 </ScrollView>

@@ -9,16 +9,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nugu.uniseoul.R;
-import com.nugu.uniseoul.adapter.RivewRecyclerViewAdapter;
 import com.nugu.uniseoul.adapter.VolRecyclerViewAdapter;
 import com.nugu.uniseoul.data.VolData;
 

@@ -51,7 +51,7 @@ public class TransportActivity extends AppCompatActivity {
         params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.setMargins(0, 0, 10, 10);  // 왼쪽, 위, 오른쪽, 아래 순서입니다.
 
-        textView.setText(stationNm);
+        textView.setText(stationNm+" 정류장");
 
         new Thread(new Runnable() {
 
@@ -85,15 +85,16 @@ public class TransportActivity extends AppCompatActivity {
                         for (int i = 0; i < rtNms.size(); i++) {
                             Button button = new Button(TransportActivity.this);
                             button.setText(rtNms.get(i));
-                            button.setBackgroundColor(Color.parseColor("#66CC33"));
+                            button.setBackgroundResource(R.drawable.bus_route_textbox);
                             button.setTextColor(Color.parseColor("#ffffff"));
                             button.setLayoutParams(params);
                             final String rtId = rtIds.get(i);
+                            final String rtNm = rtNms.get(i);
                             button.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     Intent intent = new Intent(TransportActivity.this, BusRouteActivity.class);
-                                    intent.putExtra("rtId", rtId);
+                                    intent.putExtra("rtData", rtId+","+rtNm);
                                     startActivity(intent);
                                 }
                             });

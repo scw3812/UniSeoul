@@ -15,9 +15,7 @@ import com.nugu.uniseoul.CourseActivity;
 import com.nugu.uniseoul.R;
 import com.nugu.uniseoul.data.CourseData;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecyclerViewAdapter.MyViewHolder>{
     private List<CourseData> mDataset;

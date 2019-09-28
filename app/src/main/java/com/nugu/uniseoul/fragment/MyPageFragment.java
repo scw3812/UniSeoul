@@ -20,9 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.nugu.uniseoul.R;
-import com.nugu.uniseoul.ReadReviewActivity;
-import com.nugu.uniseoul.adapter.MainFragmentAdapter;
-import com.nugu.uniseoul.adapter.RivewRecyclerViewAdapter;
 import com.nugu.uniseoul.data.ReviewData;
 
 import org.json.JSONArray;
@@ -239,7 +236,13 @@ public class MyPageFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace( );
         }
-
-
     }
+
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        if(isVisibleToUser){
+//            refresh();
+//        }
+//        super.setUserVisibleHint(isVisibleToUser);
+//    }
 }

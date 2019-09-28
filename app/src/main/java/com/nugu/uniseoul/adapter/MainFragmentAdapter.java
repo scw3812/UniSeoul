@@ -25,14 +25,14 @@ public class MainFragmentAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0 :
-                VolFragment volFragment = new VolFragment();
-                return volFragment;
-            case 1 :
-                MyPageFragment myPageFragment = new MyPageFragment();
-                return myPageFragment;
-            case 2 :
                 CourseFragment courseFragment = new CourseFragment();
                 return courseFragment;
+            case 1 :
+                VolFragment volFragment = new VolFragment();
+                return volFragment;
+            case 2 :
+                MyPageFragment myPageFragment = new MyPageFragment();
+                return myPageFragment;
             default :
                 return null;
         }

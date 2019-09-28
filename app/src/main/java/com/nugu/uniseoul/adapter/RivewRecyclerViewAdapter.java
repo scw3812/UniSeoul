@@ -1,24 +1,17 @@
 package com.nugu.uniseoul.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.nugu.uniseoul.CourseActivity;
 import com.nugu.uniseoul.R;
-import com.nugu.uniseoul.data.CourseData;
 import com.nugu.uniseoul.data.ReviewData;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class RivewRecyclerViewAdapter extends RecyclerView.Adapter<RivewRecyclerViewAdapter.MyViewHolder>{

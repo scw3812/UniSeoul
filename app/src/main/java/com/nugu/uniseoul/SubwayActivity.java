@@ -41,7 +41,7 @@ public class SubwayActivity extends AppCompatActivity {
 
         subwayData = getIntent().getStringExtra("subwayData").split(",");
 
-        stationNmtextView.setText(subwayData[0]);
+        stationNmtextView.setText(subwayData[0]+"역");
 
         String json = null;
         try {
@@ -91,7 +91,7 @@ public class SubwayActivity extends AppCompatActivity {
                         if(subwayXmlData[2].equals("Y")){
                             wheelchair.setImageResource(R.drawable.subway_wheelchair);
                         }
-                        toiletLocation.setText(subwayXmlData[3]);
+                        toiletLocation.setText("   "+subwayXmlData[3]+"   ");
                     }
                 });
             }

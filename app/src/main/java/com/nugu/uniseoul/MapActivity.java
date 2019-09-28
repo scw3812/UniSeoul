@@ -17,6 +17,7 @@ import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.overlay.InfoWindow;
 import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.Overlay;
+import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.MarkerIcons;
 import com.nugu.uniseoul.task.GeoTransTask;
 import com.nugu.uniseoul.task.GeocoderTask;
@@ -107,7 +108,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         // 마커를 클릭하면:
         Overlay.OnClickListener listener = overlay -> {
             Marker marker = (Marker)overlay;
-            if(marker.getIcon() == MarkerIcons.GREEN){
+            if(marker.getIcon().equals(OverlayImage.fromResource(R.drawable.marker_green))){
                 if (marker.getInfoWindow() == null) {
                     // 현재 마커에 정보 창이 열려있지 않을 경우 엶
                     infoWindow.open(marker);
@@ -116,7 +117,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     infoWindow.close();
                 }
             }else{
-                if(marker.getIcon() == MarkerIcons.BLACK){
+                if(marker.getIcon().equals(OverlayImage.fromResource(R.drawable.marker_black))){
                     Intent intent = new Intent(MapActivity.this, TransportActivity.class);
                     intent.putExtra("busData", marker.getTag().toString());
                     startActivityForResult(intent,1);
@@ -134,6 +135,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         marker.setPosition(new LatLng(lat, lon));
         marker.setTag(address[0]);
         marker.setOnClickListener(listener);
+        marker.setIcon(OverlayImage.fromResource(R.drawable.marker_green));
         marker.setMap(naverMap);
 
         new Thread(new Runnable() {
@@ -156,7 +158,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             double lonStation = Double.parseDouble(stations[i-2]);
                             Marker markerStation = new Marker();
                             markerStation.setPosition(new LatLng(latStation,lonStation));
-                            markerStation.setIcon(MarkerIcons.BLACK);
+                            markerStation.setIcon(OverlayImage.fromResource(R.drawable.marker_black));
                             markerStation.setTag(stations[i]+","+stations[i-3]);
                             markerStation.setOnClickListener(listener);
                             markerStation.setMap(naverMap);
@@ -188,7 +190,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             }
                             Marker markerStation = new Marker();
                             markerStation.setPosition(new LatLng(yStation, xStation));
-                            markerStation.setIcon(MarkerIcons.RED);
+                            markerStation.setIcon(OverlayImage.fromResource(R.drawable.marker_red));
                             markerStation.setTag(subway[i-3]+","+subway[i-2]);
                             markerStation.setOnClickListener(listener);
                             markerStation.setMap(naverMap);

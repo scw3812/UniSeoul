@@ -3,6 +3,9 @@ package com.nugu.uniseoul;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -15,6 +18,7 @@ import java.net.URL;
 public class BusRouteActivity extends AppCompatActivity {
 
     private TextView busRouteTextView;
+    private ListView busRouteListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +26,20 @@ public class BusRouteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bus_route);
 
         busRouteTextView = (TextView) findViewById(R.id.bus_route_textview);
-
+        busRouteListView = (ListView)findViewById(R.id.bus_route_listview);
 
         new Thread(new Runnable() {
             StringBuffer buffer = new StringBuffer();
+            String[] busRoute = null;
             @Override
             public void run() {
-                String rtId = getIntent().getExtras().getString("rtId");
+                String[] rtData = getIntent().getExtras().getString("rtData").split(",");
+                String rtId = rtData[0];
+                String rtNm = rtData[1];
 
                 String queryUrl = "http://ws.bus.go.kr/api/rest/busRouteInfo/getStaionByRoute?ServiceKey="+getString(R.string.bus_api_key)+"&busRouteId="+rtId;
                 // TODO Auto-generated method stub
+                Log.d("url",queryUrl);
                 try {
                     URL url = new URL(queryUrl);//문자열로 된 요청 url을 URL 객체로 생성.
                     InputStream is = url.openStream(); //url위치로 입력스트림 연결
@@ -54,13 +62,13 @@ public class BusRouteActivity extends AppCompatActivity {
                                 else if (tag.equals("direction")) {
                                     xpp.next();
                                     if(!buffer.toString().contains(xpp.getText())){
-                                        buffer.append(xpp.getText()+"\n");//direction 요소의 TEXT 읽어와서 문자열버퍼에 추가
+                                        buffer.append(xpp.getText()+" 방향"+"\n");//direction 요소의 TEXT 읽어와서 문자열버퍼에 추가
                                     }
                                 }
                                 else if (tag.equals("stationNm")) {
                                     xpp.next();
                                     if(!buffer.toString().contains(xpp.getText())) {
-                                        buffer.append(xpp.getText() + " - ");//stationNm 요소의 TEXT 읽어와서 문자열버퍼에 추가
+                                        buffer.append(xpp.getText() + "\n");//stationNm 요소의 TEXT 읽어와서 문자열버퍼에 추가
                                     }
                                 }
                                 break;
@@ -79,15 +87,22 @@ public class BusRouteActivity extends AppCompatActivity {
                     // TODO Auto-generated catch blocke.printStackTrace();
                 }
 
-                buffer.deleteCharAt(buffer.length()-2);
+//                buffer.deleteCharAt(buffer.length()-2);
 
+                busRoute = buffer.toString().split("\n");
 
                 runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
                         // TODO Auto-generated method stub
-                        busRouteTextView.setText(buffer.toString());
+                        busRouteTextView.setText(rtNm);
+
+                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(BusRouteActivity.this,android.R.layout.simple_list_item_1);
+                        for(int i = 0; i<busRoute.length; i++){
+                            arrayAdapter.add(busRoute[i]);
+                        }
+                        busRouteListView.setAdapter(arrayAdapter);
                     }
                 });
 

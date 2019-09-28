@@ -2,23 +2,15 @@ package com.nugu.uniseoul;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
-import com.nugu.uniseoul.data.CourseData;
 import com.nugu.uniseoul.data.VolData;
-import com.nugu.uniseoul.fragment.VolFragment;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
