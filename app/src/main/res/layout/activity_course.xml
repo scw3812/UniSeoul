@@ -111,74 +111,74 @@
                 android:id="@+id/course_barrierfree1"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/sidewalk"
+                android:src="@drawable/course_sidewalk"
                 android:layout_weight="1"
                 android:clickable="true"/>
             <ImageView
                 android:id="@+id/course_barrierfree2"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/parking"
+                android:src="@drawable/course_parking"
                 android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/course_barrierfree3"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/uneven"
+                android:src="@drawable/course_uneven"
                 android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/course_barrierfree4"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/elevator"
+                android:src="@drawable/course_elevator"
                 android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/course_barrierfree5"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/toilet"
+                android:src="@drawable/course_toilet"
                 android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/course_barrierfree6"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/room"
+                android:src="@drawable/course_room"
                 android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/course_barrierfree7"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/stand"
+                android:src="@drawable/course_stand"
                 android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/course_barrierfree8"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ticket"
+                android:src="@drawable/course_ticket"
                 android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/course_barrierfree9"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/vision"
+                android:src="@drawable/course_vision"
                 android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/course_barrierfree10"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/hearing"
+                android:src="@drawable/course_guide"
                 android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/course_barrierfree11"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/guide"
+                android:src="@drawable/course_hearing"
                 android:layout_weight="1"/>
             <ImageView
                 android:id="@+id/course_barrierfree12"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/wheelchair"
+                android:src="@drawable/course_wheelchair"
                 android:layout_weight="1"/>
         </LinearLayout>
 

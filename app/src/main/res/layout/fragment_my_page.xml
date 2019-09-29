@@ -9,55 +9,65 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="#ffffff"
         android:weightSum="1">
 
         <LinearLayout
+            android:id="@+id/page_frament_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:weightSum="1"
             android:layout_weight="0.35"
-            android:background="@color/colorPrimary3">
+            android:background="@drawable/my_background"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:gravity="left">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10sp"
+                        android:text="My Page"
+                        android:textColor="#ffffff"
+                        android:textSize="25sp"
+                        android:textStyle="bold"></TextView>
+                    <!--
+                       <ImageView
+                           android:id="@+id/refresh_btn"
+                           android:layout_margin="20dp"
+                           android:layout_width="50dp"
+                           android:layout_height="50dp"
+                           android:clickable="true"
+                           android:src="@drawable/refresh"
+                           ></ImageView>
+                       -->
+                </LinearLayout>
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/profile_view"
+                    android:layout_width="150sp"
+                    android:layout_height="150sp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:weightSum="1"
-                android:layout_weight="0.3"
-                android:background="@color/colorPrimary3">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:layout_weight="0.5">
-                    <ImageView
-                        android:id="@+id/refresh_btn"
-                        android:layout_margin="20dp"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:clickable="true"
-                        android:src="@drawable/refresh"
-                        ></ImageView>
-                </LinearLayout>
-                <com.mikhaellopez.circularimageview.CircularImageView
-                    android:id="@+id/profile_view"
-                    android:layout_width="150sp"
-                    android:layout_height="150sp"
-                    android:layout_gravity="center"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.3"></TextView>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="1"
-                android:layout_weight="0.65"
-                android:background="@color/colorPrimary3">
+                android:layout_weight="0.6">
 
                 <TextView
                     android:id="@+id/my_page_name"
@@ -79,10 +89,8 @@
                     android:textColor="#ffffff"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:layout_margin="10sp"
                     ></TextView>
             </LinearLayout>
-
         </LinearLayout>
         <LinearLayout
             android:layout_weight="0.7"
@@ -119,20 +127,20 @@
                         android:layout_marginBottom="15sp"
                         android:src="@drawable/circle">
                     </ImageView>
-                        <TextView
-                            android:id="@+id/vol_count"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignLeft="@id/vol_circle_img"
-                            android:layout_alignTop="@id/vol_circle_img"
-                            android:layout_alignRight="@id/vol_circle_img"
-                            android:layout_alignBottom="@id/vol_circle_img"
-                            android:gravity="center"
-                            android:text="0"
-                            android:textColor="#000000"
-                            android:textSize="40sp"
-                            android:textStyle="bold"
-                            android:typeface="sans" />
+                    <TextView
+                        android:id="@+id/vol_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/vol_circle_img"
+                        android:layout_alignTop="@id/vol_circle_img"
+                        android:layout_alignRight="@id/vol_circle_img"
+                        android:layout_alignBottom="@id/vol_circle_img"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="#000000"
+                        android:textSize="40sp"
+                        android:textStyle="bold"
+                        android:typeface="sans" />
                 </RelativeLayout>
 
             </LinearLayout>

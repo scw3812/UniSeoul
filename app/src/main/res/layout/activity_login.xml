@@ -8,15 +8,69 @@
     android:layout_height="match_parent"
     android:background="@drawable/loading_background">
 
+
     <com.google.android.gms.common.SignInButton
         android:id="@+id/login_button"
-        android:layout_width="331dp"
-        android:layout_height="68dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/signup_password"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/signup_password"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.885"></com.google.android.gms.common.SignInButton>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/signup_email"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/signup_password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.838"></com.google.android.gms.common.SignInButton>
+        app:layout_constraintVertical_bias="0.977" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/signup_password"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:hint="password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.858" />
+
+    <Button
+        android:id="@+id/login_login"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="#ffffff"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="@+id/signup_password"
+        app:layout_constraintTop_toBottomOf="@+id/signup_password" />
+
+    <Button
+        android:id="@+id/login_signup"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="#ffffff"
+        android:text="Sign up"
+        app:layout_constraintEnd_toEndOf="@+id/signup_password"
+        app:layout_constraintHorizontal_bias="0.921"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_password" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

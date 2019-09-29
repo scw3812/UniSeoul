@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.nugu.uniseoul.LicenseActivity;
 import com.nugu.uniseoul.MainActivity;
 import com.nugu.uniseoul.R;
 import com.nugu.uniseoul.SearchActivity;
@@ -71,6 +72,8 @@ public class CourseFragment extends Fragment {
         toolbar.inflateMenu(R.menu.menu);
         ((MainActivity) getActivity()).setSupportActionBar(toolbar);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("");
+        ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((MainActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.seoul);
         setHasOptionsMenu(true);
 
         return rootView;
@@ -84,10 +87,16 @@ public class CourseFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_search) {
-            Intent intent = new Intent(getActivity(), SearchActivity.class);
-            startActivity(intent);
-            return true;
+        int id = item.getItemId();
+        switch (id){
+            case android.R.id.home :
+                Intent intent = new Intent(getActivity(), LicenseActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_search :
+                Intent intent2 = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent2);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

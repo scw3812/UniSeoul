@@ -8,36 +8,49 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30sp"
-        android:background="#45af31"/>
-    <EditText
-        android:id="@+id/writeTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_weight="0.5"
-        android:hint="제목"
-        android:gravity="center"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/writeContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="9.2"
-        android:ems="10"
-        android:gravity="center"
-        android:hint=""
-        android:inputType="textPersonName" />
-
-    <Button
-        android:id="@+id/sendPostData"
-        android:layout_weight="0.3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="작성하기" />
+        android:orientation="vertical"
+        android:weightSum="1.0"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.05"
+            android:layout_marginBottom="20sp">
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+          android:background="#45af31"/>
+          <EditText
+              android:id="@+id/writeTitle"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:ems="10"
+              android:layout_weight="0.5"
+              android:hint="제목"
+              android:gravity="center"
+              android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/writeContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="9.2"
+                android:ems="10"
+                android:gravity="center"
+                android:hint=""
+                android:inputType="textPersonName" />
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.95">
+                <ImageView
+                    android:clickable="true"
+                    android:src="@drawable/write_btn"
+                    android:id="@+id/sendPostData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="작성하기" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,7 @@ public class MyPageFragment extends Fragment {
     private int count_review = 0;
     private int count_vol = 0;
 
+    LinearLayout pageLayout;
     TextView volCount;
     TextView reviewCount;
     ImageView refresh;
@@ -63,6 +65,7 @@ public class MyPageFragment extends Fragment {
 
 
 
+
         mAuth = FirebaseAuth.getInstance( );
         final FirebaseUser user = mAuth.getCurrentUser( );
 
@@ -73,6 +76,8 @@ public class MyPageFragment extends Fragment {
 
         TextView name_text = viewGroup.findViewById(R.id.my_page_name);
         TextView email_text = viewGroup.findViewById(R.id.my_page_email);
+        LinearLayout pageLayout = viewGroup.findViewById(R.id.page_frament_layout);
+
 
         name_text.setText(user_name);
         email_text.setText(user_email);
@@ -80,15 +85,16 @@ public class MyPageFragment extends Fragment {
         TextView volCount = viewGroup.findViewById(R.id.vol_count);
         TextView reviewCount = viewGroup.findViewById(R.id.review_count);
 
-        ImageView refresh = viewGroup.findViewById(R.id.refresh_btn);
+        //ImageView refresh = viewGroup.findViewById(R.id.refresh_btn);
+
+        /*
         refresh.setOnClickListener(new View.OnClickListener( ) {
             @Override
             public void onClick(View v) {
                 refresh();
             }
         });
-
-
+         */
 
         Thread mThread = new Thread( ) {
             @Override
@@ -101,7 +107,11 @@ public class MyPageFragment extends Fragment {
                     conn.connect( );
                     InputStream is = conn.getInputStream( );
                     bitmap = BitmapFactory.decodeStream(is);
-                } catch (MalformedURLException ee) {
+                }
+                catch(NullPointerException eee){
+                    eee.printStackTrace();
+                }
+                catch (MalformedURLException ee) {
                     ee.printStackTrace( );
                 } catch (IOException e) {
                     e.printStackTrace( );
@@ -238,11 +248,11 @@ public class MyPageFragment extends Fragment {
         }
     }
 
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        if(isVisibleToUser){
-//            refresh();
-//        }
-//        super.setUserVisibleHint(isVisibleToUser);
-//    }
+
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        if(isVisibleToUser){
+            refresh();
+        }
+        super.setUserVisibleHint(isVisibleToUser);
+    }
 }

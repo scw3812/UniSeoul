@@ -9,11 +9,6 @@
     android:background="#ffffff">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/seoul"/>
-
-    <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/toolbar_icon_uniseoul"

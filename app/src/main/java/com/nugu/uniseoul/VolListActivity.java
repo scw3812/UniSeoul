@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,8 @@ public class VolListActivity extends AppCompatActivity {
     private TextView place_textview;
 
     //private Button uni_btn;
-    private Button vol_btn;
+    private ImageView vol_btn;
+    int i = 0;
 
 
     @Override
@@ -88,7 +90,7 @@ public class VolListActivity extends AppCompatActivity {
         //uni_btn.setText("신청하기");
 
 
-        vol_btn =  (Button)findViewById(R.id.vol_list_vol_btn);
+        vol_btn =  (ImageView) findViewById(R.id.vol_list_vol_btn);
 
         /*
         uni_btn.setOnClickListener(new View.OnClickListener( ) {
@@ -109,15 +111,29 @@ public class VolListActivity extends AppCompatActivity {
         */
         vol_btn.setOnClickListener(new View.OnClickListener( ) {
             @Override
-            public void onClick(View v) {
 
-                new Thread() {
+            public void onClick(View v) {
+                Thread t1 = new Thread() {
                     public void run() {
                         Log.d("put uni ",v_num + user_id + user_email);
                         put_helper(v_num,user_id,user_email);
+
+
                     }
-                }.start();
-                Toast.makeText(getApplicationContext(), "신청완료!", Toast.LENGTH_LONG).show();
+                };
+                t1.start();
+                try{
+                    t1.join();
+                    if(i ==1)
+                        Toast.makeText(getApplicationContext(), "신청완료!", Toast.LENGTH_LONG).show();
+                    if(i == 2)
+                        Toast.makeText(getApplicationContext(), "이미 신청 되어있습니다.", Toast.LENGTH_LONG).show();
+                    if(i ==0)
+                        Toast.makeText(getApplicationContext(), "신청 오류.", Toast.LENGTH_LONG).show();
+                } catch (InterruptedException e) {
+                    e.printStackTrace( );
+                }
+
 
             }
         });
@@ -155,6 +171,14 @@ public class VolListActivity extends AppCompatActivity {
             //설정한 URL을 실행시키기
             HttpResponse response = client.execute(post);
             //통신 값을 받은 Log 생성. (200이 나오는지 확인할 것~) 200이 나오면 통신이 잘 되었다는 뜻!
+            if(response.getStatusLine().getStatusCode()==200){
+                i =1;
+            }
+            if(response.getStatusLine().getStatusCode()==400){
+                i = 2;
+            }
+
+
             Log.i("Insert Log", "response.getStatusCode:" + response.getStatusLine().getStatusCode());
 
         } catch (ClientProtocolException e) {
@@ -162,6 +186,8 @@ public class VolListActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 
     private void put_uni(String v_num, String v_user_id, String v_email) {

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,7 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 public class WriteReviewActivity extends AppCompatActivity {
 
-    Button sendPostData;
+    ImageView sendPostData;
     EditText titleEditText;
     EditText contentEditText;
     FirebaseAuth mAuth;
@@ -51,8 +52,6 @@ public class WriteReviewActivity extends AppCompatActivity {
         final String cid = bundle.getString("cid");
         Log.d("cid",cid);
 
-        final CourseData courseData = (CourseData)intent.getSerializableExtra("course");
-
         final EditText titleEditText = findViewById(R.id.writeTitle);
         final EditText contentEditText = findViewById(R.id.writeContent);
 
@@ -64,6 +63,14 @@ public class WriteReviewActivity extends AppCompatActivity {
 
                 final String title_value = titleEditText.getText().toString();
                 final String content_value =  contentEditText.getText().toString();
+                if(title_value.equals("")){
+                    Toast.makeText(getApplicationContext(), "제목을 작성해주세요", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if(content_value.equals("")){
+                    Toast.makeText(getApplicationContext(), "내용을 작성해주세요", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 new Thread() {
                     public void run() {
@@ -74,9 +81,7 @@ public class WriteReviewActivity extends AppCompatActivity {
                 }.start();
                 Toast.makeText(getApplicationContext(), "작성완료!", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(WriteReviewActivity.this,CourseActivity.class);
-                intent.putExtra("course",courseData);
-                startActivity(intent);
+                finish();
             }
         });
     }
