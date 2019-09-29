@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,6 +35,8 @@ public class WriteReviewActivity extends AppCompatActivity {
     EditText titleEditText;
     EditText contentEditText;
     FirebaseAuth mAuth;
+    String saveCid;
+    CourseData saveCourseData;
 
     String user_email;
     @Override
@@ -50,7 +53,11 @@ public class WriteReviewActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final String cid = bundle.getString("cid");
+        saveCid = cid;
         Log.d("cid",cid);
+
+        final CourseData courseData = (CourseData)intent.getSerializableExtra("course");
+        saveCourseData = courseData;
 
         final EditText titleEditText = findViewById(R.id.writeTitle);
         final EditText contentEditText = findViewById(R.id.writeContent);
@@ -81,6 +88,9 @@ public class WriteReviewActivity extends AppCompatActivity {
                 }.start();
                 Toast.makeText(getApplicationContext(), "작성완료!", Toast.LENGTH_LONG).show();
 
+                Intent intent = new Intent(WriteReviewActivity.this, CourseActivity.class);
+                intent.putExtra("course",courseData);
+                startActivity(intent);
                 finish();
             }
         });
@@ -128,5 +138,12 @@ public class WriteReviewActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this,ReadReviewActivity.class);
+        intent.putExtra("cid",saveCid);
+        intent.putExtra("course",saveCourseData);
+        startActivity(intent);
+    }
 }

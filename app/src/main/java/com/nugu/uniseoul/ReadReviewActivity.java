@@ -33,6 +33,8 @@ public class ReadReviewActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private ImageView review_btn;
+    private List<ReviewData> reviewDatas;
+    private CourseData saveCourseData;
 
 
     @Override
@@ -57,6 +59,7 @@ public class ReadReviewActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         final String cid = bundle.getString("cid");
         final CourseData courseData = (CourseData)intent.getSerializableExtra("course");
+        saveCourseData = courseData;
 
 
         review_btn = findViewById(R.id.review_btn);
@@ -67,6 +70,7 @@ public class ReadReviewActivity extends AppCompatActivity {
                 intent.putExtra("cid",cid);
                 intent.putExtra("course",courseData);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -126,7 +130,7 @@ public class ReadReviewActivity extends AppCompatActivity {
                 Log.d("buffer",buffer.toString());
                 JSONArray arrayDocs = jsonObj.getJSONArray("docs");
 
-                List<ReviewData> reviewDatas = new ArrayList<>();
+                reviewDatas = new ArrayList<>();
 
                     for (int i = 0, j = arrayDocs.length(); i < j; i++) {
                         JSONObject obj = arrayDocs.getJSONObject(i);
@@ -140,7 +144,6 @@ public class ReadReviewActivity extends AppCompatActivity {
                         reviewData.setEmail(obj.getString("user_email"));
                         reviewDatas.add(reviewData);
                         }
-
                 mAdapter = new RivewRecyclerViewAdapter(reviewDatas, ReadReviewActivity.this);
                 recyclerView.setAdapter(mAdapter);
 
@@ -167,5 +170,13 @@ public class ReadReviewActivity extends AppCompatActivity {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, CourseActivity.class);
+        intent.putExtra("course",saveCourseData);
+        startActivity(intent);
     }
 }

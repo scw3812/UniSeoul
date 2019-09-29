@@ -151,6 +151,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
                 intent.putExtra("cid",title);
                 intent.putExtra("course",courseData);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -246,5 +247,4 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
             e.printStackTrace();
         }
     }
-
 }
