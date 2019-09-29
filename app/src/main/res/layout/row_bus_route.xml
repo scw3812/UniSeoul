@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginLeft="20dp">
+        <View
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="#666666"
+            android:layout_marginLeft="40dp"/>
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bus_route_circle_green"
+            android:layout_marginLeft="23dp"/>
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/bus_route_circle_white"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="10dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/bus_route_recyclerview_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="3dp"
+        android:textSize="20sp"/>
+
+</LinearLayout>

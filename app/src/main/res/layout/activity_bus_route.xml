@@ -7,16 +7,8 @@
     tools:context=".BusRouteActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/bus_route_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="direction"
-        android:textStyle="bold"/>
-
-    <ListView
-        android:id="@+id/bus_route_listview"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bus_route_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

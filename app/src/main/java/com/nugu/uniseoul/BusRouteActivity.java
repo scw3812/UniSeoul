@@ -1,12 +1,15 @@
 package com.nugu.uniseoul;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+
+import com.nugu.uniseoul.adapter.BusRouteRecyclerViewAdapter;
+import com.nugu.uniseoul.data.BusData;
+import com.nugu.uniseoul.data.Code;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -14,19 +17,27 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BusRouteActivity extends AppCompatActivity {
 
-    private TextView busRouteTextView;
-    private ListView busRouteListView;
+    private RecyclerView recyclerView;
+    private BusRouteRecyclerViewAdapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private List<BusData> mDataset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus_route);
 
-        busRouteTextView = (TextView) findViewById(R.id.bus_route_textview);
-        busRouteListView = (ListView)findViewById(R.id.bus_route_listview);
+        recyclerView = (RecyclerView)findViewById(R.id.bus_route_recyclerview);
+
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
         new Thread(new Runnable() {
             StringBuffer buffer = new StringBuffer();
@@ -87,22 +98,27 @@ public class BusRouteActivity extends AppCompatActivity {
                     // TODO Auto-generated catch blocke.printStackTrace();
                 }
 
-//                buffer.deleteCharAt(buffer.length()-2);
-
                 busRoute = buffer.toString().split("\n");
+                mDataset = new ArrayList<>();
+                for(String route:busRoute){
+                    BusData busData = new BusData();
+                    if(route.contains("방향")){
+                        busData.setString(route);
+                        busData.setViewType(Code.ViewType.NAME);
+                    }else{
+                        busData.setString(route);
+                        busData.setViewType(Code.ViewType.DIRECTION);
+                    }
+                    mDataset.add(busData);
+                }
 
                 runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
                         // TODO Auto-generated method stub
-                        busRouteTextView.setText(rtNm);
-
-                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(BusRouteActivity.this,android.R.layout.simple_list_item_1);
-                        for(int i = 0; i<busRoute.length; i++){
-                            arrayAdapter.add(busRoute[i]);
-                        }
-                        busRouteListView.setAdapter(arrayAdapter);
+                        mAdapter = new BusRouteRecyclerViewAdapter(BusRouteActivity.this, mDataset, rtNm);
+                        recyclerView.setAdapter(mAdapter);
                     }
                 });
 
