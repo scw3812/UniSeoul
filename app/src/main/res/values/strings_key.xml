@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="naver_client_id">6rophju24e</string>
-    <string name="naver_client_secret">blztuXQAiGrZt9gxKMZ1GRqjCqJQ8iP5qjMktmim</string>
-    <string name="kakao_application_key">a416e2aa8a4fa2096f48a6f626333809</string>
-    <string name="bus_api_key">x%2FZr06rKIdxezUe0OLkuibQ%2BkhuzMUskBtIm0gVVK48LEHIRuBLwSDXdtYIyKt58IMgY0BXbTBC4Ipi2iE6Znw%3D%3D</string>
-    <string name="subway_api_key1">695746774e736377393561766d7953</string>
-    <string name="subway_api_key2">48644b64477363773638705a464f6a</string>
-</resources>
