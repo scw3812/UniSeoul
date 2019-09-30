@@ -61,6 +61,7 @@ public class WriteReviewActivity extends AppCompatActivity {
 
         final EditText titleEditText = findViewById(R.id.writeTitle);
         final EditText contentEditText = findViewById(R.id.writeContent);
+        contentEditText.setHorizontallyScrolling(false);
 
         sendPostData = findViewById(R.id.sendPostData);
 
