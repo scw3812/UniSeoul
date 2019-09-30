@@ -13,7 +13,16 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:text="정류장"
-           android:textSize="20sp"/>
+           android:textSize="20sp"
+           android:textStyle="bold"
+           android:layout_marginBottom="10dp"
+           android:layout_marginTop="10dp"/>
+
+       <TextView
+           android:text="저상버스 정보"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="10dp"/>
 
        <GridLayout
            android:id="@+id/transport_layout"
