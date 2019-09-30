@@ -1,6 +1,7 @@
 package com.nugu.uniseoul.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.nugu.uniseoul.LoginActivity;
 import com.nugu.uniseoul.R;
 import com.nugu.uniseoul.data.ReviewData;
 
@@ -53,6 +55,7 @@ public class MyPageFragment extends Fragment {
     TextView volCount;
     TextView reviewCount;
     ImageView refresh;
+    TextView logout;
 
     public MyPageFragment() {
         System.out.println("frag" + user_name + user_email);
@@ -77,8 +80,17 @@ public class MyPageFragment extends Fragment {
         TextView name_text = viewGroup.findViewById(R.id.my_page_name);
         TextView email_text = viewGroup.findViewById(R.id.my_page_email);
         LinearLayout pageLayout = viewGroup.findViewById(R.id.page_frament_layout);
+        logout = (TextView)viewGroup.findViewById(R.id.my_page_logout);
 
-
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
         name_text.setText(user_name);
         email_text.setText(user_email);
 

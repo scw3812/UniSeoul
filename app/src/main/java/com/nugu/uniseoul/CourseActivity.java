@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -35,7 +36,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     private ImageView courseImage;
     private TextView textViewContentHompage;
     private TextView textViewContentTel;
-    private ImageButton mapButton;
+    private Button mapButton;
     private ImageView[] courseBarrierFree;
     private TextView reviewTitle;
     private TextView reviewContent;
@@ -44,6 +45,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
     private GridLayout gridLayout;
     private ImageView[] courseTripBarrierFree;
     private String[] tripBarrierFreeArray;
+    private ImageView courseHeart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +83,7 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         courseImage = (ImageView)findViewById(R.id.course_image);
         textViewContentHompage = (TextView)findViewById(R.id.course_content_hompage);
         textViewContentTel = (TextView)findViewById(R.id.course_content_tel);
-        mapButton = (ImageButton)findViewById(R.id.course_map_button);
+        mapButton = (Button)findViewById(R.id.course_map_button);
         courseBarrierFree = new ImageView[]{(ImageView)findViewById(R.id.course_barrierfree1),(ImageView)findViewById(R.id.course_barrierfree2),
                 (ImageView)findViewById(R.id.course_barrierfree3),(ImageView)findViewById(R.id.course_barrierfree4),
                 (ImageView)findViewById(R.id.course_barrierfree5),(ImageView)findViewById(R.id.course_barrierfree6),
@@ -92,8 +94,12 @@ public class CourseActivity extends AppCompatActivity implements View.OnClickLis
         courseTripBarrierFree = new ImageView[]{(ImageView)findViewById(R.id.course_notice_parking),(ImageView)findViewById(R.id.course_notice_toilet),
                 (ImageView)findViewById(R.id.course_notice_wheelchair),(ImageView)findViewById(R.id.course_notice_braille),
                 (ImageView)findViewById(R.id.course_notice_lent),(ImageView)findViewById(R.id.course_notice_slope)};
+        courseHeart = (ImageView)findViewById(R.id.course_heart);
 
         textViewTitle.setText(title);
+        if(tripBarrierFreeArray == null){
+            courseHeart.setVisibility(View.GONE);
+        }
         Glide.with(this).load(courseData.getCourseImage()).placeholder(R.drawable.uniseoul_placeholder).into(courseImage);
         textViewContentHompage.setText(contentHompage);
         textViewContentTel.setText(contentTel);

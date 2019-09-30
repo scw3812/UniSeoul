@@ -195,6 +195,13 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/my_page_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그아웃"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"/>
     </LinearLayout>
 
 </FrameLayout>
